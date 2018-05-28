@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Site-live: day 1"
+title: "Day 1: site is live"
 date: 2018-05-28
 ---
 
-Finally have this site running, using
+I'm using
 * Github pages for hosting
 * Markdown for content
 * Jekyll for static site generation
