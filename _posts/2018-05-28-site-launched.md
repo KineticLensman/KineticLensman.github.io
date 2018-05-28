@@ -1,3 +1,8 @@
+---
+layout: post
+title: "Site-live: day 1"
+date: 2018-05-28
+---
 
 Finally have this site running, using
 * Github pages for hosting
