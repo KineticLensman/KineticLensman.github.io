@@ -1,5 +1,5 @@
 ---
-layout: pages
+layout: default
 ---
 
 Preview Meta content
