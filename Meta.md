@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Meta
 ---
 
-Preview Meta content
+Some more preview Meta content
