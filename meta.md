@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Meta
+permalink: /meta
 ---
 
 ## How it works
