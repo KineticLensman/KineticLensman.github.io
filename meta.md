@@ -9,7 +9,7 @@ This website is hosted on GitHub Pages, which is currently ad-free. I'll move th
 
 ## This website doesn't track you
 
-This website does not harvest your data, track your visits, or place cookies or other tracon your devices. It will work identically even if you have disabled javascript or are running ad blockers.
+This website does not harvest your data, track your visits, or place trackers (such as cookies) on your devices. It will work identically even if you have disabled javascript or are running ad blockers.
 
 ## Technical details
 
