@@ -12,6 +12,7 @@ nav ul, footer ul {
 nav ul li, footer ul li {
     display: inline;
     margin-right: 20px;
+    font-family:'Verdana', 'Geneva', 'sans-serif';
 }
 a {
     text-decoration: none;
@@ -47,7 +48,7 @@ ul.posts {
 }
 
 ul.posts li {
-    list-style: none;
+   /* list-style: none;*/
     font-family:'Verdana', 'Geneva', 'sans-serif';
     /* font-size: 1.5em; /* not specified before */
 }
