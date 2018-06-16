@@ -41,11 +41,13 @@ footer {
 }
 
 ul.posts { 
-    margin: 20px auto 40px; 
+    margin: 20px auto 40px;
+    font-family:'Verdana', 'Geneva', 'sans-serif';
     /*font-size: 1.2em; */
 }
 
 ul.posts li {
     list-style: none;
+    font-family:'Verdana', 'Geneva', 'sans-serif';
     /* font-size: 1.5em; /* not specified before */
 }
