@@ -30,7 +30,7 @@ h2 {
     font-family:'Verdana', 'Geneva', 'sans-serif';
 }
 p {
-    font-size: 1.5em;    /* was 1.5 */
+    /* font-size: 1.5em; */   /* was 1.5 */
     /* line-height: 1.4em; /* was 1.4 */
     /* color: #333; */
     font-family:'Verdana', 'Geneva', 'sans-serif';
@@ -44,13 +44,13 @@ footer {
 ul.posts { 
     margin: 20px auto 40px;
     font-family:'Verdana', 'Geneva', 'sans-serif';
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     /*font-size: 1.2em; */
 }
 
 ul.posts li {
    /* list-style: none;*/
     font-family:'Verdana', 'Geneva', 'sans-serif';
-    font-size: 1.5em;
+    /* font-size: 1.5em; */
     /* font-size: 1.5em; /* not specified before */
 }
