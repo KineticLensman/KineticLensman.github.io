@@ -30,7 +30,7 @@ h2 {
 }
 p {
     /* font-size: 1.2em;    /* was 1.5 */
-    line-height: 1.4em; /* was 1.4 */
+    /* line-height: 1.4em; /* was 1.4 */
     /* color: #333; */
     font-family:'Verdana', 'Geneva', 'sans-serif';
 }
@@ -42,7 +42,7 @@ footer {
 
 ul.posts { 
     margin: 20px auto 40px; 
-    font-size: 1.2em;
+    /*font-size: 1.2em; */
 }
 
 ul.posts li {
