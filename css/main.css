@@ -49,7 +49,7 @@ ul.posts {
 }
 
 ul.posts li {
-   /* list-style: none;*/
+    list-style: none;
     font-family:'Verdana', 'Geneva', 'sans-serif';
     /* font-size: 1.5em; */
     /* font-size: 1.5em; /* not specified before */
