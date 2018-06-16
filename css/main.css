@@ -22,6 +22,7 @@ a:hover {
     text-decoration: underline;
 }
 li {
+    /* added this one to zap a Times New Roman that was sneaking in from somewhere */
     font-family:'Verdana', 'Geneva', 'sans-serif';
 }
 h1 {
