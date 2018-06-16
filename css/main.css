@@ -24,6 +24,10 @@ h1 {
     font-size: 2em; /* was 3em */
     font-family:'Verdana', 'Geneva', 'sans-serif';
 }
+h2 {
+    font-size: 1.5em; /* not specified before */
+    font-family:'Verdana', 'Geneva', 'sans-serif';
+}
 p {
     /* font-size: 1.2em;    /* was 1.5 */
     line-height: 1.4em; /* was 1.4 */
@@ -33,6 +37,7 @@ p {
 footer {
     border-top: 1px solid #d5d5d5;
     font-size: 1.0em;
+    font-family:'Verdana', 'Geneva', 'sans-serif';
 }
 
 ul.posts { 
