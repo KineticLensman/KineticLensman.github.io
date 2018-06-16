@@ -11,7 +11,7 @@ This website does not harvest your data, record your visits, or use trackers (su
 
 This site is currently hosted on [GitHub Pages](https://pages.github.com/), a free-to-use and ad-free hosting service for static websites. The pages themselves are built by [Jekyll](https://jekyllrb.com/), which converts text files containing [Markdown](https://daringfireball.net/projects/markdown/) formatting into the content you see here. Jekyll is integrated with GitHub Pages, so updating my site is as simple as editing my source text files (I'm using the [Atom](https://atom.io/) text editor for this) and then uploading them to my GitHub repository. 
 
-All of the tools used here are open-source and if necessary I can port the site from GitHub Pages to other [Git](https://git-scm.com/)-based hosting services. There are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the process I followed to set things up. Now that I have the site up and running, the tools aren't getting in the way of my writing process (unlike some - I'm looking at you, [Blender](https://www.blender.org/)) and I can completely focus on the creative process.
+All of the tools used here are open-source and if necessary I can port the site from GitHub Pages to other [Git](https://git-scm.com/)-based hosting services. There are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the process I followed to set things up. Now that I have the site up and running, the tools aren't getting in my way (unlike some - I'm looking at you, [Blender](https://www.blender.org/)) and I can completely focus on the creative process.
 
 
 
