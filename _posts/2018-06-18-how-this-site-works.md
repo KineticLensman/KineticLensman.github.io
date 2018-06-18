@@ -13,6 +13,8 @@ I had several goals when creating this site:
 * Avoid services that rely on ads and other sponsored content
 * Avoid lock-in to specific vendors by using free open source tools 
 
+In contrast, hosting blog comments was not a key goal - partly because of my 'independent and non-tracking' approach, but also because I don't want to deal with spam or worry about content moderation. I'll provide contact mechanisms if necessary in due course.
+
 These goals fundamentally drove my choice of hosting platform and development tools.
 ## Hosting
 After some initial research, I selected [GitHub Pages](https://pages.github.com/) as my hosting environment. GitHub is a web-based content hosting service, and is itself built on the open-source [Git](https://git-scm.com/) version control system. GitHub Pages is a service offered by GitHub for hosting static websites - sites whose content is prepared in advance and which does not use information harvested from readers when they visit the site.
