@@ -16,11 +16,11 @@ nav ul li, footer ul li {
 }
 a {
     text-decoration: none;
-    color: #2a2c40 /* #777; */
+    color: #13368f /* #777; */
 }
 a:hover {
     text-decoration: underline;
-    color: #202020 /* nor prevously specified */
+    color: #0f245a /* nor prevously specified */
 }
 li {
     /* added this one to zap a Times New Roman that was sneaking in from somewhere */
