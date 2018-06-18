@@ -9,9 +9,9 @@ This website does not harvest your data, record your visits, or place trackers (
 
 ## I built this site to give myself a simple creative workflow
 
-This site is currently hosted on [GitHub Pages](https://pages.github.com/), a free-to-use and ad-free hosting service for static websites. I write the pages using the [Atom](https://atom.io/) text editor, inserting simple [Markdown](https://daringfireball.net/projects/markdown/) formatting instructions to get headings, bullet lists, etc. My raw text is converted into the web-pages you see by [Jekyll](https://jekyllrb.com/), which is completely integrated with GitHub Pages. So, updating the content is as simple as editing my text files and uploading them to my GitHub repository, where Jekyll processes them automatically.
+This site is currently hosted on [GitHub Pages](https://pages.github.com/), a free-to-use and ad-free hosting service for static websites. I write the pages using the [Atom](https://atom.io/) text editor, inserting simple [Markdown](https://daringfireball.net/projects/markdown/) formatting instructions to get headings, bullet lists, etc. I then upload the files to my GitHub repository, where they are automatically converted into web pages by [Jekyll](https://jekyllrb.com/). Now that I have the site up and running, the tools aren't getting in my way (unlike some - I'm looking at you, [Blender](https://www.blender.org/)) and I can completely focus on the creative process.
 
-There are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the process I followed to set things up. Now that I have the site up and running, the tools aren't getting in my way (unlike some - I'm looking at you, [Blender](https://www.blender.org/)) and I can completely focus on the creative process.
+If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the process I followed to set things up. 
 
 ## I'm using open source tools to maintain this site's independence
 
