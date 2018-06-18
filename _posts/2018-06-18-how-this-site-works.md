@@ -27,7 +27,7 @@ The content creation workflow I've adopted is a standard one for GitHub Pages:
 * When I'm happy with the text, I upload it to my GitHub repository using the GitHub web interface
 * GitHub then automatically processes the raw text files using [Jekyll](https://jekyllrb.com/) to create the static web pages you see in your browser
 
-If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the specific steps involved.
+If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the  steps needed to create a GitHub Pages site. The set-up process isn't really complicated, and basically involves creating some folders and files that provide the framework Jekyll needs to automatically convert text files in a GitHub repository into web-pages. You only have to do set-up once, unless you decide to change the appearance of your site. 
 ## Assessment
 Now that I have the site up and running, the tools aren't getting in my way (unlike some - I'm looking at you, [Blender](https://www.blender.org/)) and I can completely focus on the creative process. The individual tools are reasonably well documented and so far I haven't hit any fundamental show-stoppers. 
 
