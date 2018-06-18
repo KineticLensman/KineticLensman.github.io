@@ -22,9 +22,9 @@ After some initial research, I selected [GitHub Pages](https://pages.github.com/
 
 The content creation workflow I've adopted is a standard one for GitHub Pages: 
 
-* I write the pages using the [Atom](https://atom.io/) text editor. Compared with something like Microsoft Word, Atom is clean and minimalistic. It has one job to do (edit text) and it does it well
+* I write the pages on my development machine using the [Atom](https://atom.io/) text editor. Compared with something like Microsoft Word, Atom is clean and minimalistic. It has one job to do (edit text) and it does it well
 * I insert simple [Markdown](https://daringfireball.net/projects/markdown/) formatting instructions to get headings, bullet lists, etc. Atom gives a live preview of the Markdown so I can check that the formatting looks okay
-* When I'm happy with its appearance, I upload the text to my GitHub repository using the GitHub web interface
+* When I'm happy with the text, I upload it to my GitHub repository using the GitHub web interface
 * GitHub then automatically processes the raw text files using [Jekyll](https://jekyllrb.com/) to create the static web pages you see in your browser
 
 If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the specific steps involved.
