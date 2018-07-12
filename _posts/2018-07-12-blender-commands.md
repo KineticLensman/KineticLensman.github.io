@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Blender"
-date: YYYY-MM-DD
+title: "Blender commands"
+date: 2018-07-12
 ---
 
 For reasons to be discussed elsewhere, I'm teaching myself [Blender](www.blender.org). The Blender User Interface is heavily keyboard driven and a knowledge of the keyboard shortcuts is essential for effective interactions. Here's a Blender cheatsheet
