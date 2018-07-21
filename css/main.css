@@ -70,4 +70,5 @@ tr {
 code {
     /* Trying to control table display */
     font-size: 1.5;
+    font-family:'Courier', 'sans-serif';
 }
