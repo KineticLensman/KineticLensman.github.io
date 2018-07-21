@@ -59,3 +59,8 @@ ul.posts li {
     /* font-size: 1.5em; */
     /* font-size: 1.5em; /* not specified before */
 }
+
+tr {
+    /* Trying to control table display */
+    font-family:'Verdana', 'Geneva', 'sans-serif';
+}
