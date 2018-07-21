@@ -7,7 +7,7 @@ date: 2018-07-12
 For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www.blender.org/). The Blender User Interface is heavily keyboard driven and a knowledge of the keyboard shortcuts is essential for effective interactions. Here's a Blender cheatsheet
 ## Basics
 
-:Event |: Meaning
+Event |Meaning
 :----------|:----------
 `Shift s`|`Snap` menu (e.g. cursor to center)
 `Tab` | Toggle: edit Mode / object Mode
@@ -20,7 +20,7 @@ For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www
 
 ## selection
 
-:Event |: Meaning
+Event |Meaning
 :----------|:----------
 `RMB` | click select
 `Shift RMB` | multiple select
@@ -30,8 +30,8 @@ For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www
 ## Camera movement
 The directions in the following table describe the movement of the camera, not objects in the scene
 
-:Event |: Meaning |: `Ctrl+...` |: `Shift+...`
-:----------|:----------
+Event |: Meaning |`Ctrl+...` |`Shift+...`
+:----------|:----------|:----------|:----------
 `MMB`|rotate cam |zoom| pan freely
 `Scroll MMB`|zoom|pan left/right|pan up/down
 `Numpad 1`|front view | back | -
@@ -50,14 +50,14 @@ The directions in the following table describe the movement of the camera, not o
 
 Other useful view controls
 
-:Event |:Meaning
+Event |Meaning
 :----------|:----------
 `Shift f`|Fly mode (WASD, arrows, etc)
 `Ctrl Alt q`| quad view / single view
 
 ## Layout customization
 
-:Event |:Meaning
+Event |Meaning
 :----------|:----------
 `t`|Tool shelf sidebar
 `n`|Properties sidebar
