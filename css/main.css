@@ -63,4 +63,5 @@ ul.posts li {
 tr {
     /* Trying to control table display */
     font-family:'Verdana', 'Geneva', 'sans-serif';
+    background-color: Ghostwhite;
 }
