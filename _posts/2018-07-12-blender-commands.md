@@ -8,7 +8,7 @@ For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www
 ## Basics
 
 Event | Meaning
-----------|----------
+:----------|:----------
 `Shift s`|`Snap` menu (e.g. cursor to center)
 `Tab` | Toggle: edit Mode / object Mode
 `g`| grab
@@ -21,7 +21,7 @@ Event | Meaning
 ## selection
 
 Event | Meaning
-----------|----------
+:----------|:----------
 `RMB` | click select
 `Shift RMB` | multiple select
 `b`| border select (drag rect)
@@ -31,7 +31,7 @@ Event | Meaning
 The directions in the following table describe the movement of the camera, not objects in the scene
 
 Event | Meaning | `Ctrl+...` | `Shift+...`
-----------|----------
+:----------|:----------
 `MMB`|rotate cam |zoom| pan freely
 `Scroll MMB`|zoom|pan left/right|pan up/down
 `Numpad 1`|front view | back | -
@@ -51,14 +51,14 @@ Event | Meaning | `Ctrl+...` | `Shift+...`
 Other useful view controls
 
 Event | Meaning
-----------|----------
+:----------|:----------
 `Shift f`|Fly mode (WASD, arrows, etc)
 `Ctrl Alt q`| quad view / single view
 
 ## Layout customization
 
 Event | Meaning
-----------|----------
+:----------|:----------
 `t`|Tool shelf sidebar
 `n`|Properties sidebar
 `Ctrl MMB`|Cycle through tabs
