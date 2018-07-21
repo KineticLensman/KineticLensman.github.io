@@ -66,3 +66,8 @@ tr {
     font-size: 0.8em;
     background-color: Ghostwhite;
 }
+
+code {
+    /* Trying to control table display */
+    font-size: 1.5;
+}
