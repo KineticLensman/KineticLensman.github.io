@@ -30,7 +30,7 @@ Event |Meaning
 ## Camera movement
 The directions in the following table describe the movement of the camera, not objects in the scene
 
-Event |: Meaning |`Ctrl+...` |`Shift+...`
+Event |Meaning |`Ctrl+...` |`Shift+...`
 :----------|:----------|:----------|:----------
 `MMB`|rotate cam |zoom| pan freely
 `Scroll MMB`|zoom|pan left/right|pan up/down
