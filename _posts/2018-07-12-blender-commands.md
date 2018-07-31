@@ -4,7 +4,7 @@ title: "Blender commands"
 date: 2018-07-12
 ---
 
-For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www.blender.org/). The Blender User Interface is heavily keyboard driven and a knowledge of the keyboard shortcuts is essential for effective interactions. Here's a Blender cheatsheet
+For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www.blender.org/). The Blender User Interface is heavily keyboard driven and a knowledge of the keyboard shortcuts is essential for effective interactions. Here's an evolving Blender cheatsheet
 ## Basics
 
 Event |Meaning
@@ -67,9 +67,10 @@ Event |Meaning
 LMB and drag in window triangle to split or join
 RMB on window boundary to split or join
 
-A bit more here but that is the basics
 
 ## Configuring blender
+
+Here are the non-default configuration settings that I'm currently using.
 
 Interface tab 
 * Auto Depth
