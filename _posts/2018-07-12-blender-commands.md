@@ -4,7 +4,8 @@ title: "Blender commands"
 date: 2018-07-12
 ---
 
-For reasons to be discussed elsewhere, I'm teaching myself [Blender](https://www.blender.org/). The Blender User Interface is heavily keyboard driven and a knowledge of the keyboard shortcuts is essential for effective interactions. Here's an evolving Blender cheatsheet
+I'm teaching myself [Blender](https://www.blender.org/) to improve my 3D Asset Generation skills. I'm using Blender's own [tutorials](https://cloud.blender.org/p/game-asset-creation/56041550044a2a00d0d7e069), and these notes are my record of the various commands and techniques mentioned in the videos.
+
 ## Basics
 
 Event |Meaning
@@ -55,6 +56,28 @@ Event |Meaning
 `Shift f`|Fly mode (WASD, arrows, etc)
 `Ctrl Alt q`| quad view / single view
 
+## Object visualisation
+
+Event | Meaning
+----------|----------
+`z`| solid view / wireframe
+`Alt z`| solid view / textured
+
+`Properties sidebar`->`shading` tab has additional controls
+* GLSL
+* backface culling
+* MatCap (e.g. red, mirrored, etc)
+
+
+## layers
+
+Event | Meaning
+----------|----------
+`m`|Move (selected object) to layer
+
+The object tab of the properties window has a layers control that achieves a similar effect.
+
+
 ## Layout customization
 
 Event |Meaning
@@ -81,6 +104,6 @@ Addons
 * Rigify
 
 
-## General tips
+## Text editing
 
 To edit the text of a text object, `tab` to enter edit mode, `tab` again when
