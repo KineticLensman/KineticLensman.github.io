@@ -4,13 +4,14 @@ title: "Blender commands"
 date: 2018-07-12
 ---
 
-I'm teaching myself [Blender](https://www.blender.org/) to improve my 3D Asset Generation skills. I'm using Blender's own [tutorials](https://cloud.blender.org/p/game-asset-creation/56041550044a2a00d0d7e069), and these notes are my record of the various commands and techniques mentioned in the videos.
+I'm teaching myself [Blender](https://www.blender.org/) to improve my 3D Asset Generation skills. I'm using Blender's own [tutorials](https://cloud.blender.org/p/game-asset-creation/56041550044a2a00d0d7e069), and these notes are my record of the various commands and techniques mentioned in the tutorials.
 
 ## Basics
 
 Event |Meaning
 :----------|:----------
 `Shift s`|`Snap` menu (e.g. cursor to center)
+`Shift a`|`Add` menu
 `Tab` | Toggle: edit Mode / object Mode
 `g`| grab
 `s` | scale
