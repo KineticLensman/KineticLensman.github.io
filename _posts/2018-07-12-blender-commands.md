@@ -65,9 +65,9 @@ Event | Meaning
 `Alt z`| solid view / textured
 
 `Properties sidebar`->`shading` tab has additional controls
-* GLSL
+* GLSL // GLSL = OpenGL Shading Language
 * backface culling
-* MatCap (e.g. red, mirrored, etc)
+* MatCap (e.g. red, mirrored, etc). // MatCap = material capture
 
 
 ## layers
