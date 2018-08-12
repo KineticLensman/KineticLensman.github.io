@@ -5,10 +5,10 @@ date: 2018-08-12
 ---
 ## Introduction
 
-This is the first of a two part blog on practical barbeque techniques concentrating on the equipment and how you use it. The second will look at cooking techniques for different types of food.
+This is the first of a two part blog on practical barbeque techniques concentrating on the equipment and how you use it. In the second part, I'll look at cooking techniques for different types of food.
 ## Equipment
 
-First, the essential equipment
+First, the essential equipment:
 
 * The barbeque itself. I use a Weber kettle grill. This is a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, as we will see, it also has a lid.
 * Charcoal in the form of briquettes (coal). Briquettes are more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they will pump out heat for much, much longer. They allow long duration cooking of a couple of hours.
@@ -17,7 +17,7 @@ First, the essential equipment
 * A lighter - either long safety matches or a butane gas lighter.
 * Some sort of hand protection (oven gloves, leather garden gloves, etc) for handling really hot metal.
 
-Optional stuff
+Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food.
 * A chimney starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet.
 * Metal skewers. Any skewers will do, but I prefer the sort that have a fat handle at one for ease of turning and double pronged skewers for delicate items (e.g. mushrooms).
