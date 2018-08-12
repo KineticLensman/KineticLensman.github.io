@@ -39,8 +39,8 @@ Because I enjoy the process (which I don't think should be hurried), I prefer th
 ## Cooking
 
 How I position the coals reflects the two different ways of cooking using a barbeque:
-* Direct - the coals are spread across the charcoal grate and the food is placed directly over them - this is 'classic' barbeque mode.
-* Indirect - the coals are scooped to the sides of the charcoal grate, leaving an empty strip in the middle, over which the food goes. Indirect cooking is great for large food items that need a long cooking time so that they get cooked through without their surfaces being carbonised.
+* Direct - the coals are spread across the charcoal grate and the food is placed directly over them - this is 'classic' barbeque mode
+* Indirect - the coals are scooped to the sides of the charcoal grate, leaving an empty strip in the middle, over which the food goes. Indirect cooking is great for large food items that need a long cooking time so that they get cooked through without their surfaces being carbonised
 
 In practice I often go for a sort-of half way house between direct and indirect, with one edge of the charcoal grate left coal-free so that I get a heat gradient of very hot, hot and quite hot. I use the very hot / hot side for direct cooking, and can put things that I want done more slowly over the less hot side. I can then do a multi-course meal, with the first course cooked more directly, and later courses indirectly cooked, gradually getting moved toward the hotter side as the meal progresses. This is a great way to deal with things like chicken that needs a long cook (perhaps 30 mins) to get properly done throughout. It also gives me a chance to eat as well, while waiting for the indirectly cooked stuff. 
 
