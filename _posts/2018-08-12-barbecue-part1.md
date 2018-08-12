@@ -34,7 +34,7 @@ To light the barbeque, I put a single flat layer of coals onto the charcoal grat
 
 The alternative approach to lighting is to use a starter chimney. The basic technique is similar: put some coal and lighter cubes on the base, light it, and then pour in more coals on top. The advantage of chimneys is that you don't need to move the coals around to get them evenly burnt, and the concentrated heat means that they are ready faster. You are however limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
 
-Because I enjoy the process (which I don't think should be hurried), I prefer the 'pyramid' approach, unless I'm in a real hurry, or it's raining. 
+Because I enjoy the process (which I don't think should be hurried), I prefer the 'pyramid' approach, unless I am actually in a hurry, or it's raining. 
 
 ## Cooking
 
