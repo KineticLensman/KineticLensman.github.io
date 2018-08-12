@@ -5,7 +5,7 @@ date: 2018-08-12
 ---
 ## Introduction
 
-This is the first of a two part blog on practical barbeque techniques concentrating on the equipment and how you use it. In the second part, I'll look at cooking techniques for different types of food.
+This is the first of a two part blog on practical barbeque techniques. In this first part, I'm concentrating on the equipment and how you use it. In the second part, I'll look at cooking techniques for different types of food.
 ## Equipment
 
 First, the essential equipment:
