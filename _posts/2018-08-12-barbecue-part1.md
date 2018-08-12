@@ -28,7 +28,7 @@ Optional stuff:
 
 ## Lighting the barbeque
 
-First, I position the barbeque in an open-air area and make sure all of the air vents are fully open. If necessary I temporarily close nearby windows to stop the ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (such as a tent) because of the whole 'carbon monoxide makes everybody die' thing.
+First, I position the barbeque in an open-air area and make sure all of its air vents are fully open. If necessary I temporarily close nearby windows to stop the ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (such as a tent) because of the whole 'carbon monoxide makes everybody die' thing.
 
 To light the barbeque, I put a single flat layer of coals onto the charcoal grate, shaped into a rough circle. I then place four of five firelighter cubes near the centre, and light them using the lighter. Once they are lit, and working quickly, I make a crude pyramid of coals over the cubes, using tongs to reposition the ones that fall off. I then leave it for 15 minutes or so and go to do some meat preparation or similar. When I get back, the outer coals will still be mainly unburnt, but there should be a good red glow in the middle. At this point, I poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre. I'll repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible. The barbeque will generate quite a lot of smoke in the first few minutes just after ignition but this should all have cleared well before you start cooking.
 
