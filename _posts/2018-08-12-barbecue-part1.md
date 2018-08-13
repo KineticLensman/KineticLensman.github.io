@@ -1,11 +1,15 @@
 ---
 layout: post
-title: "Barbeque cooking Part 1: working the equipment"
+title: "Zen and the art of barbeque cooking: part 1 - the equipment and how to use it"
 date: 2018-08-12
 ---
 ## Introduction
 
 This is the first of a two part blog on practical barbeque techniques. In this first part, I'm concentrating on the equipment and how you use it. In the second part, I'll look at cooking techniques for different types of food.
+
+Why 'Zen'? Well, this guidance is for data-driven people like myself who seek to know details, understand inner workings, and master mechanics. If you are a gestalt, seat-of-the-pants pit-master, this might not be the guidance you seek.
+
+
 ## Equipment
 
 First, the essential equipment:
@@ -19,7 +23,7 @@ First, the essential equipment:
 
 Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
-* A chimney starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
+* A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
 * Metal skewers. Any skewers will do, but I prefer the sort that have a fat handle at one for ease of turning and double pronged skewers for delicate items (e.g. mushrooms)
 * Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the holes of a regular cooking grate
 * Other cooking tools including spatulas, forks etc
@@ -55,5 +59,10 @@ The exception to using the lid like this is when I want to cook something (like 
 
 ## Serving
 
-I put cooked food onto a warm plate and then take this to the table rather than serve people directly from the grill. This lets me concentrate on the cooking rather than try to be fair to a queue of hungry people, especially when I don't know whether they prefer large bits or small, well-done or rarer, etc. It's a good way to reduce the pressure of dealing with a large crowd, especially when children are involved. 
+I put cooked food onto a warm plate and then take this to the table rather than serve people directly from the grill. This lets me concentrate on the cooking rather than try to be fair to a queue of hungry people, especially when I don't know whether they prefer large bits or small, well-done or rarer, etc. It's a good way to reduce the pressure of dealing with a large crowd, especially when children are involved. Because the next course is cooking indirectly, I can grab a bite myself.
 
+## Afterwards
+
+Let the ash get completely cold before bringing the barbeque back inside. Really, really cold. Closing the air vents speeds up the cooling, but it will normally take several hours. I empty the ash into my dustbin and brush everything down. If I was using lumpwood, I'd compost the ash, but I'm not sure about the bonding agents that are used in briquettes.
+
+If the cooking grill has got sticky or has burnt residue it gets a clean with a metal scouring pad (crumpled foil is a field-expedient alternative). Wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to the food and then get ingested, which makes for a hard-to-find internal bleed. 
