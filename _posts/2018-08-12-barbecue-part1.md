@@ -63,6 +63,12 @@ I put cooked food onto a warm plate and then take this to the table rather than 
 
 ## Afterwards
 
-Let the ash get completely cold before bringing the barbeque back inside. Really, really cold. Closing the air vents speeds up the cooling, but it will normally take several hours. I empty the ash into my dustbin and brush everything down. If I was using lumpwood, I'd compost the ash, but I'm not sure about the bonding agents that are used in briquettes.
+I let the ash get completely cold before bringing the barbeque back inside. Really, really cold. Closing the air vents speeds up the cooling, but it will normally take several hours. I empty the ash into my dustbin and brush everything down. If I was using lumpwood, I'd compost the ash, but I'm not sure about the bonding agents that are used in briquettes.
 
 If the cooking grill has got sticky or has burnt residue it gets a clean with a metal scouring pad (crumpled foil is a field-expedient alternative). Wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to the food and then get ingested, which makes for a hard-to-find internal bleed. 
+
+## And when it rains?
+
+One of my most memorable barbeques was in Knysna, South Africa, on New Year's day. It rained. As a Brit, the hosts thought I'd be better at dealing with the precipitation than them, and I was asked to take charge. Kettle lid to the rescue!
+
+If rain happens, and it will, there are two things you can do. Firstly, use a starter chimney to get the charcoal going. The more intense heat wil drive off light drizzle. Alternatively, if you don't have a chimney, light the barbeque and then quickly place the lid at a jaunty angle (it should have an internal flange specifically for this) that keeps the rain out but lets air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. You might have to take the food inside to eat, but it will still have that unique smoked flavour that makes everything worthwhile.
