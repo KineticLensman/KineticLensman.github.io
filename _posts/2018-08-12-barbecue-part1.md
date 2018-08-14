@@ -1,14 +1,11 @@
 ---
 layout: post
-title: "Zen and the art of barbeque cooking: part 1 - the equipment and how to use it"
+title: "Barbeque cooking: part 1 - the equipment and how to use it"
 date: 2018-08-12
 ---
 ## Introduction
 
 This is the first of a two part blog on practical barbeque techniques. In this first part, I'm concentrating on the equipment and how you use it. In the second part, I'll look at cooking techniques for different types of food.
-
-Why 'Zen'? Well, this guidance is for data-driven people like myself who seek to know details, understand inner workings, and master mechanics. If you are a gestalt, seat-of-the-pants pit-master, this might not be the guidance you seek.
-
 
 ## Equipment
 
