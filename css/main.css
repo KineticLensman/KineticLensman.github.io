@@ -1,6 +1,6 @@
 body {
     margin: 50px auto;  /* reduced from 60px */
-    /* width: 70%;  removed*/
+    width: 80%;
     max-width: 800px;  /* added */
 }
 nav ul, footer ul {
