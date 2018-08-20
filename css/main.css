@@ -1,7 +1,7 @@
 body {
     margin: 30px auto;  /* reduced from 60px */
     width: 80%;
-   /* max-width: 800px;  /* added */
+    max-width: 800px;  /* added */
 }
 nav ul, footer ul {
     /* font-family:'Helvetica', 'Arial', 'Sans-Serif'; */
