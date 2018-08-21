@@ -12,7 +12,7 @@ This is the first of a two part blog on practical barbeque techniques. In this f
 First, the essential equipment:
 
 * The barbeque itself. I use a Weber kettle grill. This is a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, as we will see, it also has a lid
-* Charcoal in the form of briquettes (coal). Briquettes are more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they will pump out heat for much, much longer. They allow long duration cooking of a couple of hours
+* Charcoal in the form of briquettes. Briquettes (coals) are more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they will pump out heat for much, much longer. They allow long duration cooking of a couple of hours
 * Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and in fact mine have different coloured handles so that I don't get them confused
 * Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I personally go for the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
 * A lighter - either long safety matches or a butane gas lighter
@@ -29,13 +29,21 @@ Optional stuff:
 
 ## Lighting the barbeque
 
-First, I position the barbeque in an open-air area and make sure all of its air vents are fully open. If necessary I temporarily close nearby windows to stop the ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (such as a tent) because of the whole 'carbon-monoxide-makes-everybody-die' thing.
+First, position the barbeque in an open-air area and make sure all of its air vents are fully open. If necessary temporarily close nearby windows to stop the ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (such as a tent) because of the whole 'carbon-monoxide-makes-everybody-die' thing.
 
-To light the barbeque, I put a single flat layer of coals onto the charcoal grate, shaped into a rough circle. I then place four of five firelighter cubes near the centre, and light them using the lighter. Once they are lit, and working quickly, I make a crude pyramid of coals over the cubes, using tongs to reposition the ones that fall off. I then leave it for 15 minutes or so and go to do some meat preparation or similar. When I get back, the outer coals will still be mainly unburnt, but there should be a good red glow in the middle. At this point, I poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre. I'll repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible. The barbeque will generate quite a lot of smoke in the first few minutes just after ignition but this should all have cleared well before you start cooking.
+To light the barbeque:
+* Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
+* Place four of five firelighter cubes near the centre, and light them using the lighter
+* Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that fall off
+* Leave it for 15 minutes, so that the outer coals are mainly unburnt, but there is a good red glow in the middle
+* Poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre
+* Repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible.
 
-The alternative approach to lighting is to use a starter chimney. The basic technique is similar: put some coal and lighter cubes on the base, light it, and then pour in more coals on top. When the coals are ready, tip them onto the charcoal grate. The advantage of chimneys is that you don't need to move the coals around to get them evenly burnt, and the concentrated heat means that they are ready faster. You are however limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
+The barbeque will generate quite a lot of smoke in the first few minutes just after ignition but this should all have cleared well before you start cooking.
 
-Because I think barbeques should be unhurried, and I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining. Either way, the next step is to add smoking wood if you are using it, and get cooking...
+Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
+
+Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining. Either way, the next step is to add smoking wood if you are using it, and get cooking...
 
 ## Cooking
 
@@ -45,7 +53,7 @@ How I position the coals reflects the two different ways of cooking using a barb
 
 In practice I often go for a sort-of half way house between direct and indirect, using a cooking grate but with one edge of the charcoal grate left coal-free so that I get a heat gradient of very hot, hot and quite hot. I use the very hot / hot side for direct cooking, and can put things that I want done more slowly over the less hot side. I can then do a multi-course meal, with the first course cooked more directly, and later courses indirectly cooked, gradually getting moved toward the hotter side as the meal progresses. This is a great way to deal with things like chicken that needs a long cook (perhaps 30 mins) to get properly done throughout. It also gives me a chance to eat as well, while waiting for the indirectly cooked stuff. 
 
-However, the secret to both direct and indirect cooking is to use the kettle lid. Put the food in position (making sure nothing will get scorched by intense direct heat), put the lid on and then leave things for at least five minutes before lifting the lid to check progress and perhaps turn things or move them closer to or further away from the heat. Occasional turns like this also help to ensure that food is evenly cooked on all sides. When cooking solely using indirect heat, I might not lift the lid for really long times, perhaps 30 mins to an hour depending on what I'm cooking.
+However, the secret to both direct and indirect cooking (once the coals are ready) is to use the kettle lid. Put the food in position (making sure nothing will get scorched by intense direct heat), put the lid on and then leave things for at least five minutes before lifting the lid to check progress and perhaps turn things or move them closer to or further away from the heat. Occasional turns like this also help to ensure that food is evenly cooked on all sides. When cooking solely using indirect heat, I might not lift the lid for really long times, perhaps 30 mins to an hour depending on what I'm cooking.
 
 Using the lid really helps:
 * It lets heat build up inside the kettle, making the overall temperature much higher and getting good, even heat everywhere. The barbeque becomes a combined oven-grill
@@ -60,12 +68,10 @@ I put cooked food onto a warm plate and then take this to the table rather than 
 
 ## Afterwards
 
-I let the ash get completely cold before bringing the barbeque back inside. Really, really cold. Closing the air vents speeds up the cooling, but it will normally take several hours. I empty the ash into my dustbin and brush everything down. If I was using lumpwood, I'd compost the ash, but I'm not sure about the bonding agents that are used in briquettes.
+Let the ash get completely cold before bringing the barbeque back inside. Really, really cold. Closing the air vents speeds up the cooling, but it will normally take several hours. I empty the ash into my dustbin and brush everything down. If I was using lumpwood, I'd compost the ash, but I'm not sure about the bonding agents that are used in briquettes.
 
 If the cooking grill has got sticky or has burnt residue it gets a clean with a metal scouring pad (crumpled foil is a field-expedient alternative). Wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to the food and then get ingested, which makes for a hard-to-find internal bleed. 
 
 ## And when it rains?
 
-One of my most memorable barbeques was in Knysna, South Africa, on New Year's day. It rained. As a Brit, the hosts thought I'd be better at dealing with the precipitation than them, and I was asked to take charge. Kettle lid to the rescue!
-
-If rain happens, and it will, there are two things you can do. Firstly, use a starter chimney to get the charcoal going. The more intense heat wil drive off light drizzle. Alternatively, if you don't have a chimney, light the barbeque and then quickly place the lid at a jaunty angle (it should have an internal flange specifically for this) that keeps the rain out but lets air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. You might have to take the food inside to eat, but it will still have that unique smoked flavour that makes everything worthwhile.
+Firstly, use a starter chimney to get the charcoal going. The more intense heat wil drive off light drizzle. If you don't have a chimney, light the barbeque and immediately place the lid at a jaunty angle (it should have an internal flange specifically for this) that keeps the rain out but lets air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. You might have to take the food inside to eat, but it will still have that unique smoked flavour that makes everything worthwhile.
