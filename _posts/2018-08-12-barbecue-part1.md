@@ -12,7 +12,7 @@ This is the first of a two part blog on practical barbeque techniques. In this f
 First, the essential equipment:
 
 * The barbeque itself. I use a Weber kettle grill - a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, it has a lid
-* Charcoal briquettes - more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they pump out heat for much, much longer, allowing long duration cooking (e.g. two hours or more)
+* Charcoal briquettes - more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more)
 * Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and mine have different coloured handles so that I don't get them confused
 * Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I use the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
 * A lighter - either long safety matches or a butane gas lighter
@@ -22,14 +22,14 @@ Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
 * A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
 * Metal skewers. Any skewers will do, but I prefer the sort that have a fat handle at one for ease of turning and double pronged skewers for delicate items (e.g. mushrooms)
-* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the holes of a regular cooking grate
+* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate
 * Other cooking tools including spatulas, forks etc
 * Flavoured smoking wood (such as mesquite) to enhance the uniquely smoky taste of certain foods
-* A large dustpan and brush for collecting the ash residue when the barbeque has completely cooled down
+* Dustpan and brush for collecting ash when the barbeque has completely cooled down
 
 ## Lighting the barbeque
 
-First, position the barbeque in an open-air area and make sure all of its air vents are fully open. If necessary temporarily close nearby windows to stop the ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (such as a tent) because of the whole 'carbon-monoxide-makes-everybody-die' thing.
+Put the barbeque in an open-air area and check that all of its air vents are fully open. If necessary temporarily close nearby windows to stop ignition smoke going inside. I avoid using the barbeque inside or near the entrance to an enclosed area (e.g. a tent) because of the whole 'carbon-monoxide-makes-everybody-die' thing.
 
 To light the barbeque:
 * Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
@@ -47,17 +47,17 @@ Personally, I think barbeques should be unhurried, and I because I enjoy the pro
 
 ## Cooking
 
-How I position the coals reflects the two different ways of cooking using a barbeque:
-* Direct heat. I spread the coals across the charcoal grate, put the cooking grate on top and then add the food - this is 'classic' barbeque mode
-* Indirect heat: I scoop the coals to the sides of the charcoal grate, leaving an empty strip in the middle, which is where the food goes - not on a cooking grate but on some sort of rack over a foil tray (to catch drips) itself placed on the charcoal grate. Indirect cooking is great for large food items (like a rack of lamb) that need a long cooking time so that they get cooked through without their surfaces being carbonised
+How I position the coals when they are fully ready reflects the two different ways of cooking using a barbeque:
+* Direct heat. I spread the lit coals across the charcoal grate, put the cooking grate on top and then add the food - this is 'classic' barbeque mode
+* Indirect heat: I scoop the lit coals to the sides of the charcoal grate, leaving an empty strip in the middle, which is where the food goes - not on a cooking grate but on some sort of rack over a foil tray (to catch drips) itself placed on the charcoal grate. Indirect cooking is great for large food items (like a rack of lamb) that need a long cooking time so that they get cooked through without their surfaces being carbonised
 
 In practice I often go for a sort-of half way house between direct and indirect, using a cooking grate but with one edge of the charcoal grate left coal-free so that I get a heat gradient of very hot, hot and quite hot. I use the very hot / hot side for direct cooking, and can put things that I want done more slowly over the less hot side. I can then do a multi-course meal, with the first course cooked more directly, and later courses indirectly cooked, gradually getting moved toward the hotter side as the meal progresses. This is a great way to deal with things like chicken that needs a long cook (perhaps 30 mins) to get properly done throughout. It also gives me a chance to eat as well, while waiting for the indirectly cooked stuff. 
 
 However, the secret to both direct and indirect cooking (once the coals are ready) is to use the kettle lid. Put the food in position (making sure nothing will get scorched by intense direct heat), put the lid on and then leave things for at least five minutes before lifting the lid to check progress and perhaps turn things or move them closer to or further away from the heat. Occasional turns like this also help to ensure that food is evenly cooked on all sides. When cooking solely using indirect heat, I might not lift the lid for really long times, perhaps 30 mins to an hour depending on what I'm cooking.
 
-Using the lid really helps:
-* It lets heat build up inside the kettle, making the overall temperature much higher and getting good, even heat everywhere. The barbeque becomes a combined oven-grill
-* If you add flavoured smoking wood, it helps concentrate the smoke and build the flavour
+The lid has three really useful effects:
+* Heat builds up inside the kettle, rasing the overall temperature and getting more even heat everywhere. The barbeque becomes a combined oven-grill
+* It concentrates cooking smoke and builds the flavour, especially if you use smoking wood
 * It reduces the tendency to continually faff around. As you build confidence, and by placing food correctly, you stop worrying that everything will be instantly burnt
 
 The exception to using the lid like this is when I want to cook something (like scallops, or burgers in a barbeque pan) really quickly and then move on. Even then, when the quick stuff is done, I'll usually put the lid back on for the other courses. If I'm using a grilling pan, this might also be put under the lid (with the handle sticking out), especially if the pan is mainly being used to stop food falling through the grate.
