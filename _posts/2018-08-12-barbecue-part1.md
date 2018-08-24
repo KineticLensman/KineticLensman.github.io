@@ -11,10 +11,10 @@ This is the first of a two part blog on practical barbeque techniques. In this f
 
 First, the essential equipment:
 
-* The barbeque itself. I use a Weber kettle grill. This is a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, as we will see, it also has a lid
-* Charcoal in the form of briquettes. Briquettes (coals) are more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they will pump out heat for much, much longer. They allow long duration cooking of a couple of hours
-* Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and in fact mine have different coloured handles so that I don't get them confused
-* Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I personally go for the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
+* The barbeque itself. I use a Weber kettle grill - a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, it has a lid
+* Charcoal briquettes - more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood, and they pump out heat for much, much longer, allowing long duration cooking (e.g. two hours or more)
+* Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and mine have different coloured handles so that I don't get them confused
+* Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I use the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
 * A lighter - either long safety matches or a butane gas lighter
 * Some sort of hand protection (oven gloves, leather garden gloves, etc) for handling really hot metal
 
