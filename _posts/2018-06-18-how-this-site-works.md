@@ -14,7 +14,7 @@ I had several goals when creating this site:
 * Avoid services that rely on ads and other sponsored content
 * Avoid lock-in to specific vendors by using free open source tools 
 
-Hosting blog comments was not a key goal - partly because of my 'independent and non-tracking' approach, but also because I don't want to deal with spam or worry about content moderation. I'll provide contact mechanisms if necessary in due course.
+I decided at the outset not to host blog comments - partly because of my non-tracking approach, but also because I don't want to deal with spam or worry about content moderation.
 
 These goals fundamentally drove my choice of hosting platform and development tools.
 ## Hosting
@@ -28,7 +28,7 @@ My content creation workflow is a standard one for GitHub Pages:
 * When I'm happy with the text, I upload it to my GitHub repository using the GitHub web interface
 * GitHub then automatically processes the raw text files using [Jekyll](https://jekyllrb.com/) to create the static web pages you see in your browser
 
-If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the  steps needed to create a GitHub Pages site. The set-up process basically involves creating some folders and files that provide the framework Jekyll needs to automatically convert text files in a GitHub repository into web-pages. The tutorials typically provide full examples, although it helps to have beginner-level awareness of [html](https://www.w3schools.com/Html/) and [css](https://www.w3schools.com/css/default.asp) if you want to change fonts and colours away from the defaults.
+If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the  steps needed to create a GitHub Pages site. The set-up process basically involves creating some folders and files that provide the framework Jekyll needs to automatically convert text files in a GitHub repository into web-pages. The tutorials typically provide full examples, although you'll need beginner-level awareness of [html](https://www.w3schools.com/Html/) and [css](https://www.w3schools.com/css/default.asp) to change fonts and colours away from the defaults, or make your site more responsive to different device types.
 
 By default, a GitHub Pages website will have github in its web address. However, it's relatively easy to create your own custom domain (in this case, www.non-kinetic-effects.co.uk) and make it point at the GitHub site (although this will typically incur a small registration fee with a third party registration service).
     
