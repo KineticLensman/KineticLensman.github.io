@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Meta
+title: About
 ---
 
 ## I won't track you or show you ads
