@@ -63,11 +63,15 @@ The lid has three really useful effects:
 * It concentrates cooking smoke and builds the flavour, especially if you use smoking wood
 * It reduces the tendency to continually faff around. As you build confidence, and by placing food correctly, you stop worrying that everything will be instantly burnt
 
-The exception to using the lid like this is when cooking delicate food (like scallops) that don't need long cooking times, or when starting things like burgers (in a grilling pan) that you want to slide around and flip to seal the surfaces before letting them finish more slowly under the lid (perhaps with the pan handle sticking out so that it doesn't get too hot to handle).
+Exceptions to using the lid:
+* finishing food off by putting it directly over the heat to get good 'grill marks'
+* using a grilling pan for starting burgers - sealing each side by sliding and flipping the burgers. Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
+
+If you put the lid back on over a grilling pan, leave the pan's handle sticking out so it doesn't get too hot
 
 ## Serving
 
-To significantly speed up serving (retaining heat and flavoured smoke and reducing stress on the cook), put the cooked food on a clean plate and take this to the table rather than serve people directly from the grill. This lets other people get involved in making sure that everyone gets a fair potion, especially when children are present. Serving like this also means that the cook gets a chance to eat while other courses are cooking indirectly.
+To significantly speed up serving (retaining heat and flavoured smoke and reducing stress on the cook), put the cooked food on a clean plate and take this to the table rather than serve people directly from the grill. This lets other people get involved in making sure that everyone gets a fair potion, especially when children are present. Serving like this also means that the cook gets a chance to eat while other courses are cooking indirectly. The serving plate mustn't be one that was used to hold raw food before it was cooked.
 
 ## Afterwards
 
