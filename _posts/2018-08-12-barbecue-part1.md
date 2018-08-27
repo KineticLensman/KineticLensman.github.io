@@ -49,8 +49,8 @@ Personally, I think barbeques should be unhurried, and I because I enjoy the pro
 ## Cooking
 
 Is the barbeque a grill or an oven? 
-* If you spread the lit coals (when they are ready) evenly on the charcoal grate, and put the food above them on the cooking grate ('direct heat'), then you are using the barbeque like a grill 
-* if you scoop the lit coals to two sides of the kettle, and put the food between them ('indirect heat'), then the barbeque is more like a slower oven 
+* If you spread the lit coals (when they are ready) evenly on the charcoal grate, and put the food above them on the cooking grate, then you are using the barbeque like a grill ('direct heat')
+* if you scoop the lit coals to two sides of the kettle, and put the food between them, then the barbeque is more like a slower oven ('indirect heat')
 
 Cooking with direct heat is ideal for the traditional barbeque foods (sausages, burgers, skewers, etc). Indirect is best for large items (like chicken, or joints of meat) where you need a longer cooking time that doesn't carbonise the surface. For indirect heat, I usually put the food in a small rack over a foil tray, and then put this on the charcoal grate (not bothering with the cooking grate at all). 
 
