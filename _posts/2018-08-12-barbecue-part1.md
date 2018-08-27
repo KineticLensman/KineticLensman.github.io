@@ -64,7 +64,7 @@ The lid has three really useful effects:
 * It reduces the tendency to continually faff around. As you build confidence, and by placing food correctly, you stop worrying that everything will be instantly burnt
 
 Exceptions to using the lid:
-* starting burgers - using a grill pan to seal each side (by sliding and flipping). Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
+* Starting burgers - using a grill pan to seal each side (by sliding and flipping). Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
 * Just before serving - finishing food off by turning it to get good 'grill marks'
 
 If you put the lid back on over a grilling pan, leave the pan's handle sticking out so it doesn't get too hot.
