@@ -21,8 +21,8 @@ First, the essential equipment:
 Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
 * A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
-* Metal skewers. Any skewers will do, but I prefer the sort that have a fat handle at one for ease of turning and double pronged skewers for delicate items (e.g. mushrooms)
-* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate
+* Metal skewers - ideally the sort with a fat handle at one end for ease of turning. Double pronged skewers are good for delicate items (e.g. mushrooms)
+* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed
 * A small rack to support things like chicken
 * Other cooking tools including spatulas, forks etc
 * Flavoured smoking wood (such as mesquite) to enhance the uniquely smoky taste of certain foods
@@ -36,11 +36,11 @@ To light the barbeque:
 * Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
 * Place four of five firelighter cubes near the centre, and light them using the lighter
 * Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that fall off
-* Leave it for 15 minutes, so that the outer coals are mainly unburnt, but there is a good red glow in the middle
+* Leave it for 15 minutes before anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle
 * Poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre
 * Repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible
 
-The barbeque will generate quite a lot of smoke in the first few minutes just after ignition but this should all have cleared well before you start cooking.
+The barbeque will generate quite a lot of smoke just after ignition but this should clear well before you start cooking.
 
 Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
 
@@ -67,7 +67,7 @@ Exceptions to using the lid:
 * Starting burgers - using a grill pan to seal each side (by sliding and flipping). Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
 * Just before serving - finishing food off by turning it to get good 'grill marks'
 
-If you put the lid back on over a grilling pan, leave the pan's handle sticking out so it doesn't get too hot.
+If you put the kettle lid back on over a grilling pan, leave the pan's handle sticking out so it doesn't get too hot.
 
 ## Serving
 
@@ -75,9 +75,9 @@ To significantly speed up serving (retaining heat and flavoured smoke and reduci
 
 ## Afterwards
 
-Close the air vents to stop the cooking and let the ash get completely cold before dealing with it or taking the barbeque inside. Really, really cold. 
+Close the air vents to stop the cooking and let the ash get completely cold before brushing it out or taking the barbeque inside. Really, really cold. 
 
-If the cooking grill has got sticky or has burnt residue, clean it with a metal scouring pad (crumpled foil works at a push). Fine wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to food and then get ingested, which makes for a hard-to-find internal bleed. 
+Clean burnt residue from the cooking grate with a metal scouring pad (crumpled foil works at a push). Fine wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to food and then get ingested, which makes for a hard-to-find internal bleed. 
 
 ## And when it rains?
 
