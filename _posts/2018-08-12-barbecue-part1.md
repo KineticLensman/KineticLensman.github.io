@@ -77,8 +77,8 @@ To significantly speed up serving (retaining heat and flavoured smoke and reduci
 
 Close the air vents to stop the cooking and let the ash get completely cold before brushing it out or taking the barbeque inside. Really, really cold. 
 
-Clean burnt residue from the cooking grate with a metal scouring pad (crumpled foil works at a push). Fine wire brushes should be avoided because broken bits of wire can (apparently) stick to the grate, transfer to food and then get ingested, which makes for a hard-to-find internal bleed. 
+Clean burnt residue from the cooking grate with a metal scouring pad (crumpled foil works at a push). Avoid fine wire brushes because broken bits of wire can (apparently) stick to the grate, transfer to food and then get ingested, which makes for a hard-to-find internal bleed. 
 
 ## And when it rains?
 
-If it rains, use a starter chimney to get the charcoal going. The more intense heat wil drive off light drizzle. If you don't have a chimney, light the barbeque and immediately place the lid at a jaunty angle (it should have an internal flange to hold it partially open) to keep rain out but let air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. 
+If it rains, use a starter chimney to get the charcoal going. The more intense heat will drive off light drizzle. If you don't have a chimney, light the barbeque and immediately place the lid at a jaunty angle (it should have an internal flange to hold it partially open) to keep rain out but let air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. 
