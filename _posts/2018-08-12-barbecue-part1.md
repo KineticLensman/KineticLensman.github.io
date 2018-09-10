@@ -22,7 +22,7 @@ Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
 * A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
 * Metal skewers - ideally the sort with a fat handle at one end for ease of turning. Double pronged skewers are good for delicate items (e.g. mushrooms)
-* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed
+* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed. Remember that if the handle is metal, it might get very hot
 * A small rack to support things like chicken
 * Other cooking tools including spatulas, forks etc
 * Flavoured smoking wood (such as mesquite) to enhance the uniquely smoky taste of certain foods
@@ -54,7 +54,7 @@ Is the barbeque a grill or an oven?
 
 Cooking with direct heat is ideal for the traditional barbeque foods (sausages, burgers, skewers, etc). Indirect is best for large items (like chicken, or joints of meat) where you need a longer cooking time that doesn't carbonise the surface. For indirect heat, I usually put the food in a small rack over a foil tray, and then put this on the charcoal grate (not bothering with the cooking grate at all). 
 
-The half-way house between direct and indirect involves using a cooking grate but leaving one side of the charcoal grate coal-free to create a heat gradient of very hot, hot and quite hot. Use the hotter side for direct cooking, and put things to be cooked more slowly over the less hot side. When the food on the hot side is ready, you can serve it, and either leave the stuff on the cool side (for a long cook while you help eat the first course) or move it toward the hotter side to get a grilled look.
+The half-way house between direct and indirect involves using a cooking grate but leaving one side of the charcoal grate coal-free to create a heat gradient of very hot, hot and quite hot. Use the hotter side for direct cooking, and put things to be cooked more slowly over the less hot side. When the food on the hot side is ready, you can serve it, and either leave the stuff on the cool side (for a long cook while you help eat the first course) or move it toward the hotter side to finish off. If you are cooking on a slope (e.g. in an uneven campsite field) make sure the hot side is uphill, so that round things like sausages don't keep rolling into the heat.
 
 However, regardless of how you position the coal, the secret of good barbeques is to use the lid. Once you've put the food in position (making sure nothing will really get scorched), put the lid on and then leave things for at least five minutes before lifting the lid. You can then open the lid to check progress and perhaps turn things or move them closer to or further away from the heat. Occasional turns like this also help to ensure that food is evenly cooked on all sides. When cooking solely using indirect heat, I might not lift the lid for really long times, perhaps 30 mins to an hour depending on what I'm cooking.
 
@@ -67,11 +67,10 @@ Exceptions to using the lid:
 * Starting burgers - using a grill pan to seal each side (by sliding and flipping). Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
 * Just before serving - finishing food off by turning it to get good 'grill marks'
 
-If you put the kettle lid back on over a grilling pan, leave the pan's handle sticking out so it doesn't get too hot.
 
 ## Serving
 
-To significantly speed up serving (retaining heat and flavoured smoke and reducing stress on the cook), put the cooked food on a clean plate and take this to the table rather than serve people directly from the grill. This lets other people get involved in making sure that everyone gets a fair potion, especially when children are present. Serving like this also means that the cook gets a chance to eat while other courses are cooking indirectly. The serving plate mustn't be one that was used to hold raw food before it was cooked.
+To significantly speed up serving (retaining heat and flavoured smoke and reducing stress on the cook), put the cooked food on a clean plate (not one used for raw food) and take this to the table rather than serve people directly from the grill. This lets other people get involved in making sure that everyone gets a fair potion, especially when children are present. The saved time also gives the cook a chance to eat while other courses are cooking indirectly.
 
 ## Afterwards
 
@@ -79,6 +78,8 @@ Close the air vents to stop the cooking and let the ash get completely cold befo
 
 Clean burnt residue from the cooking grate with a metal scouring pad (crumpled foil works at a push). Avoid fine wire brushes because broken bits of wire can (apparently) stick to the grate, transfer to food and then get ingested, which makes for a hard-to-find internal bleed. 
 
-## And when it rains?
+## Bad weather
 
 If it rains, use a starter chimney to get the charcoal going. The more intense heat will drive off light drizzle. If you don't have a chimney, light the barbeque and immediately place the lid at a jaunty angle (it should have an internal flange to hold it partially open) to keep rain out but let air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. 
+
+In cold weather, once the cooking is done, the barbeque will make a good mini-campfire to keep three or four people warm.
