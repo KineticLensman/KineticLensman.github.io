@@ -16,13 +16,13 @@ First, the essential equipment:
 * Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and mine have different coloured handles so that I don't get them confused
 * Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I use the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
 * A lighter - either long safety matches or a butane gas lighter
-* Some sort of hand protection (oven gloves, leather garden gloves, etc) for handling really hot metal
+* Some sort of hand protection (oven gloves, leather garden gloves, etc) for handling really hot metal such as the kettle's ventilation covers, skewers and pan handles
 
 Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
 * A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
 * Metal skewers - ideally the sort with a fat handle at one end for ease of turning. Double pronged skewers are good for delicate items (e.g. mushrooms)
-* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed. Remember that if the handle is metal, it might get very hot
+* Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed
 * A small rack to support things like chicken
 * Other cooking tools including spatulas, forks etc
 * Flavoured smoking wood (such as mesquite) to enhance the uniquely smoky taste of certain foods
@@ -35,8 +35,8 @@ Put the barbeque in an open-air area and check that all of its air vents are ful
 To light the barbeque:
 * Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
 * Place four of five firelighter cubes near the centre, and light them using the lighter
-* Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that fall off
-* Leave it for 15 minutes before anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle
+* Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that roll off
+* Leave it for 15 minutes before doing anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle. It might seem that nothing is happening once the firelighters are burnt out but if you wait patiently you'll eventually see that the middle coals are acquiring white ash, which means they are coming up to temperature
 * Poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre
 * Repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible
 
@@ -44,7 +44,7 @@ The barbeque will generate quite a lot of smoke just after ignition but this sho
 
 Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
 
-Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining. Either way, the next step is to add smoking wood if you are using it, and get cooking...
+Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining (see below for more on bad weather barbeques). Either way, the next step is to add smoking wood if you are using it, and get cooking...
 
 ## Cooking
 
@@ -80,6 +80,6 @@ Clean burnt residue from the cooking grate with a metal scouring pad (crumpled f
 
 ## Bad weather
 
-If it rains, use a starter chimney to get the charcoal going. The more intense heat will drive off light drizzle. If you don't have a chimney, light the barbeque and immediately place the lid at a jaunty angle (it should have an internal flange to hold it partially open) to keep rain out but let air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. 
+If it rains, use a starter chimney to get the charcoal going. The more intense heat will drive off light drizzle. If you don't have a chimney, light the coal and immediately place the lid at a jaunty angle (it should have an internal flange to hold it partially open) to keep rain out but let air in. It will take a bit longer, but eventually the charcoal will be ready and you can revert to a normal lid-on mode. 
 
 In cold weather, once the cooking is done, the barbeque will make a good mini-campfire to keep three or four people warm.
