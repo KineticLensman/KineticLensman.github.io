@@ -20,7 +20,7 @@ First, the essential equipment:
 
 Optional stuff:
 * A pair of tongs for moving coals around when lighting the barbeque. You could use the raw food tongs for this as well, if you don't mind tiny specks of coal possibly getting on the food
-* A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. I use an old discarded kitchen frying pan as a base for the chimney to stop hot ash falling through onto the ground or my feet
+* A chimney charcoal starter - a fat metal cylinder with holes punched in the side and a shielded carry handle. An old discarded kitchen frying pan makes a base for the chimney to stop hot ash falling through onto the ground or feet
 * Metal skewers - ideally the sort with a fat handle at one end for ease of turning. Double pronged skewers are good for delicate items (e.g. mushrooms)
 * Grilling pan. This looks like a frying pan but has lots of holes punched in it. It's good for burgers or similar that you want to slide around and flip but that might fall through the slats of a regular cooking grate or stick before their surfaces are sealed
 * A small rack to support things like chicken
