@@ -5,7 +5,7 @@ title: About
 
 ## I won't track you or show you ads
 
-This website does not harvest your data, record your visits, or place trackers (such as cookies) on your devices. If you have disabled javascript or are running ad blockers, it should still work just fine. To improve your security, the site is static, meaning that its pages are delivered to you exactly as I typed them up, without any server-side collection, processing or storage of your personal data. The lack of processing also means that the site loads faster. The only reader-specific behaviour is performed by your own browser - fitting the text width to the size of your screen.
+This website does not record your visits, harvest your data, or place trackers (such as cookies) on your devices. If you have disabled javascript or are running ad blockers, it should still work just fine. To speed up page-loads and improve your security, the site is static, meaning that its pages are delivered to you without any server-side collection, processing or storage of your personal data. The only personalisation is performed by your own browser - fitting my content to the size of your screen.
 
 ## I built this site using non-proprietary tools to maintain its independence
 
