@@ -73,3 +73,7 @@ code {
     font-size: 1.5;
     font-family:'Courier', 'sans-serif';
 }
+
+img {
+  max-width: 90%;
+}
