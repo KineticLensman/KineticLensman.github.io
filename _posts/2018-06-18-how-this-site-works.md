@@ -27,7 +27,7 @@ My content creation workflow is a standard one for GitHub Pages:
 * I insert simple [Markdown](https://daringfireball.net/projects/markdown/) formatting instructions to get headings, bullet lists, etc. Atom gives a live preview of the Markdown so I can check that the formatting is broadly correct
 * When I'm happy with the text, I upload it to my GitHub repository using the GitHub web interface
 * GitHub then automatically processes the raw text files using [Jekyll](https://jekyllrb.com/) to create the static web pages you see in your browser
-* I (manually) test the new content on various browsers (typically Opera, Firefox, Safari, Edge and Chrome)
+* I check the new content in a separate browser (usually Opera), using additional browsers (typically Firefox, Safari, Edge and Chrome) if the change involved page formatting or similar
 
 If you want to try this yourself, there are some [really great tutorials](http://jmcglone.com/guides/github-pages/) that explain the  steps needed to create a GitHub Pages site. The set-up process basically involves creating some folders and files that provide the framework Jekyll needs to automatically convert text files in a GitHub repository into web-pages. The tutorials typically provide full examples, although you'll need beginner-level awareness of [html](https://www.w3schools.com/Html/) and [css](https://www.w3schools.com/css/default.asp) to change the default template settings.
 
