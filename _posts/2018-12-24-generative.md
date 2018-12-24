@@ -45,5 +45,3 @@ The code maintains a 2D array of the nodes, each of which has:
 * A list of it's initial neighbours
 
 Coding the algorithm was quite straightforward, and was actually faster than learning how to create the basic program framework in Visual Studio. Some additional complexity arose because I wanted the graphics window to be responsive while the pattern-generating algorithm was running: this involved making the code multi-threaded.
-
-The resultant software is my proof-of-principle that I’ve got a handle on the underlying software and the end-to-end process (from code design to saved graphics files). Now I can start to create some really interesting imagery (although don’t hold your breath, the algorithms take time to think through and there are leaves to clear).
