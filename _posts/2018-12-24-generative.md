@@ -9,9 +9,9 @@ date: 2018-12-24
 <img srcset="/assets/images_0001_generative/2018-12-01-140138-500.jpg 500w,
              /assets/images_0001_generative/2018-12-01-140138-1200.jpg 1200w"
      sizes="(max-width: 500px) 500px,
-						(max-width: 1200px) 1200px,
+	    (max-width: 1200px) 1200px,
             1200px"
-     src="/image_test_JPEGs/Image01.1000.jpg" alt="Generative art">
+     src="/assets/images_0001_generative/2018-12-01-140138-1200.jpg" alt="Generative art">
 
 I didn't use Photoshop or a camera to create this picture - instead I coded it using ideas from the world of `generative art`: the creation of art by autonomous systems (typically software) following procedures defined by the artist.
 
