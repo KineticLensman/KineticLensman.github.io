@@ -15,11 +15,11 @@ date: 2018-12-24
 
 I didn't use Photoshop or a camera to create this picture - instead I coded it using ideas from the world of generative art: the creation of art by autonomous systems (typically software) following procedures defined by the artist.
 
-Computer-based generative art first appeared in the 1960s and has been used to create imagery, music, architectural designs and even stories. Nowadays, one of the main applications is creating landscapes, buildings and other content for computer games. There are some really good instructional resources available, and [one of these](https://inconvergent.net/generative/) inspired me to have a go myself.
+Computer-based generative art first appeared in the 1960s and has been used to create imagery, music, architectural designs and even stories. Nowadays, one of the main applications is creating landscapes, buildings and other content for computer games. There are some really good instructional resources available, and [one of these](https://inconvergent.net/generative/) by Anders Hoff inspired me to have a go myself.
 
 ## How it works
 
-For my first try, I developed a really simple algorithm. First, draw some points in a grid on the screen. Then, repeat the following process many, many times:
+For my first try, I developed a really simple algorithm (inspired by one of Hoff's). First, draw some points in a grid on the screen. Then, repeat the following process many, many times:
 * slightly move all of the points
 * draw dotted lines between their new positions
 
@@ -29,7 +29,7 @@ The resultant image illustrates a very common outcome in generative art: extreme
 
 ## Technical details
 
-I programmed this pattern generator in the [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) language using Microsoft [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/get-started/visual-studio-ide?view=vs-2017) (which is free to download from Microsoft).
+I programmed this pattern generator in the [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)) language using Microsoft [Visual Studio](https://docs.microsoft.com/en-us/visualstudio/get-started/visual-studio-ide?view=vs-2017) (which is free).
 
 The pattern is controlled by the following parameters:
 * Number of nodes
@@ -38,10 +38,10 @@ The pattern is controlled by the following parameters:
 * Number of points drawn on each node-to-node line
 
 The code maintains a 2D array of the nodes, each of which has:
-* Current screen position (in x,y) coordinates
-* Speed - set randomly
-* Heading - set randomly
-* Heading delta - set randomly
-* A list of it's initial neighbours
+* Current screen position (in x,y) coordinates (updated after each movement)
+* Speed (assigned a random value when the node is created, left unchanged thereafter)
+* Heading (assigned a random value when the node is created)
+* Heading delta (assigned a random value when the node is created)
+* A list of neighbours to which dotted lines will be drawn (set to be it's initial nearest neighbours). 
 
 Coding the algorithm was quite straightforward, and was actually faster than learning how to create the basic program framework in Visual Studio. Some additional complexity arose because I wanted the graphics window to be responsive while the pattern-generating algorithm was running: this involved making the code multi-threaded.
