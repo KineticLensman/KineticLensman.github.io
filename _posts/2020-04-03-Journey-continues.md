@@ -5,12 +5,12 @@ date: 2020-04-03
 ---
 
 # Back into lisp
-So, after a long lapse, I decided to get back into Lisp development. My goals were to:
+So, after a long lapse, I decided to get back into Lisp development, picking up `JKL` where I left it last year. My goals were to:
 
-* Actually develop one or more actual applications
-* Continue to develop  `JKL` itself by adding new functions needed by the applications, fixing bugs or addressing open TODOs
+* Use `JKL` to build a more significant application than the little test apps I've implemented to date 
+* Continue to develop `JKL` itself by adding new functions needed by the applications, fixing bugs and addressing open TODOs
 
-I'll describe the application development in a separate post. The remainder of this post will list the various changes that I've made to `JKL`.
+I'll describe the application development in a separate post. The remainder of this post will list the various changes that I've made to `JKL`. I started these a couple of months ago, but its only now that I've got round to writing things up.
 
 # Updates and fixes
 
