@@ -34,6 +34,10 @@ Started to rationalise the format of the error messages printed by built in func
 
 # New features
 
+## String handling
+
+Added a `char` function to extract a single element of a string (since `nth` only works on sequences). `char' actually returns a substring of length 1 rather than a characters because `JKL` currently lacks a character class. This may get added in due course.
+
 ## Improved `map` implementation
 
 As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I decided to have a go at extending `map` to have similar semantics.
