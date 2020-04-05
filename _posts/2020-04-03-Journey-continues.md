@@ -36,7 +36,7 @@ Started to rationalise the format of the error messages printed by built in func
 
 ## String handling
 
-Added a `char` function to extract a single element of a string (since `nth` only works on sequences). `char' actually returns a substring of length 1 rather than a characters because `JKL` currently lacks a character class. This may get added in due course.
+Added a `char` function to extract a single element of a string (since `nth` only works on sequences). `char` actually returns a substring of length 1 rather than a characters because `JKL` currently lacks a character class. This may get added in due course.
 
 ## Improved `map` implementation
 
