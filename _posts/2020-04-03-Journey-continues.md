@@ -32,6 +32,10 @@ Changed the error handling that results when non-numbers are used as arguments f
 
 Started to rationalise the format of the error messages printed by built in functions.
 
+Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described below.
+
+Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros.
+
 # New features
 
 ## String handling
@@ -52,5 +56,4 @@ JKL> (f 1 2)
 JKL> (map f (1 2 3))
 Eval error: More parameters (bindings) than supplied values (expressions): (a b) ... (1)
 ```
-(Incidentally, I redid the error messages in `Env` - where the binding occurs - to make the problem clearer)
 TODO - this fix is ongoing at the moment. Watch this space.  
