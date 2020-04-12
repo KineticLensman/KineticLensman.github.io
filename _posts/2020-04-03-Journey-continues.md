@@ -44,18 +44,18 @@ Added a `char` function to extract a single element of a string (since `nth` onl
 
 ## Added `and`
 
-Although MAL defines the boolean `or` operator, it doesn't define `and`. So I added one, using the `or` macro to get the basic concept right. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise `and` evaluates all of is arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
+ MAL doesn't define `and`. So I added one, using the existing `or` macro as a model. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise `and` evaluates all of its arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
 ```
 (defmacro! and (fn* (& and-args)
 	(if (empty? and-args)
 		true
 		(if (= 1 (count and-args))
 			(if (first and-args) (first and-args) false)
-			(let* (condvar (gensym))
-				`(let* (~condvar ~(first and-args))
-					(if ~condvar
+			(let* (and-var (gensym))
+				`(let* (~and-var ~(first and-args))
+					(if ~and-var
 						(and ~@(rest and-args))
-						~condvar)))))))
+						~and-var)))))))
 ```
 
 ## Improved `map` implementation
