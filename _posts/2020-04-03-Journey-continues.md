@@ -42,6 +42,22 @@ Changed the definitions of built-in macros (`or`, `not`, etc) so that their args
 
 Added a `char` function to extract a single element of a string (since `nth` only works on sequences). `char` actually returns a substring of length 1 rather than a characters because `JKL` currently lacks a character class. This may get added in due course.
 
+## Added `and`
+
+Although MAL defines the boolean `or` operator, it doesn't define `and`. So I added one, using the `or` macro to get the basic concept right. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise `and` evaluates all of is arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
+```
+(defmacro! and (fn* (& and-args)
+	(if (empty? and-args)
+		true
+		(if (= 1 (count and-args))
+			(if (first and-args) (first and-args) false)
+			(let* (condvar (gensym))
+				`(let* (~condvar ~(first and-args))
+					(if ~condvar
+						(and ~@(rest and-args))
+						~condvar)))))))
+```
+
 ## Improved `map` implementation
 
 As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I decided to have a go at extending `map` to have similar semantics.
