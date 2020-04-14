@@ -38,9 +38,10 @@ Changed the definitions of built-in macros (`or`, `not`, etc) so that their args
 
 # New features
 
-## String handling
+## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
 
-Added a `char` function to extract a single element of a string (since `nth` only works on sequences). `char` actually returns a substring of length 1 rather than a characters because `JKL` currently lacks a character class. This may get added in due course.
+* `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. This may get added in due course
+* `symbol-name` - returns a string which is the print-name of a symbol, or throws an error if given a non-symbol
 
 ## Added `and`
 
@@ -59,10 +60,7 @@ Added the `and` macro using the existing `or` macro as a model. The semantics of
 						(and ~@(rest and-args))
 						~and-var)))))))
 ```
-
-## Added `symbol-name`
-
-Added a `symbol-name` built-in function with the same semantics as CL - it returns the print-name of a symbol, or throws an error if given a non-symbol.
+Notice that, as per Common Lisp, `(atom)` returns `true`.
 
 ## Improved `map` implementation
 
