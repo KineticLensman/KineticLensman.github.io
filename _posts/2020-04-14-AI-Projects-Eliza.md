@@ -18,7 +18,7 @@ The PAIP source is implememented using a dialect of Common Lisp circa 1990. `JKL
 
 * I've sometimes had to implement some Common Lisp functions (e.g. `char`) in `JKL` for direct compatability with the PAIP source
 
-* I've sometimes had to use a different solution to that used by PAIP because `JKL` has a mechanism that provides equivalent or close-enough semantics (e.g. `hashmaps` rather than Common Lisp association lists.
+* I've sometimes had to use a different solution to that used by PAIP because `JKL` has a mechanism that provides equivalent or close-enough semantics (e.g. `hashmaps` rather than Common Lisp association lists
 
-* In a few cases, Common Lisp functions used by PAIP have completely different semantics in Clojure and thus in `JKL`. I've decided to prefer the Clojure semantics in these cases to retain consistency with `MAL` and, specifically, the `MAL` regression test suite. Accordingly, I've sometimes had to develop a `JKL` function that achieves the same effect. Notably `atomic?` as the `JKL` implementation of Common Lisp's `atom` function, because `atom` in `JKL` is actually a Clojure-like mutable value.
+* In a few cases, Common Lisp functions used by PAIP have completely different semantics in Clojure and thus in `JKL`. I've decided to prefer the Clojure semantics in these cases to retain consistency with `MAL` and, specifically, the `MAL` regression test suite. Accordingly, I've sometimes had to develop a `JKL` function that achieves the same effect. Notably `atomic?` as the `JKL` implementation of Common Lisp's `atom` function, because `atom` in `JKL` is actually a Clojure-like mutable value
 
