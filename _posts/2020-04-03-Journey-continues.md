@@ -4,48 +4,19 @@ title: "Make a Lisp [6] The journey continues..."
 date: 2020-04-03
 ---
 
-# Back into lisp
+# `JKL` - the journey continues
 
-As desctibed [in a separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza), I've decided to pick up  programming again by using my `JKL` implementation of Lisp as a basis for building some semi-serious applications. Specifically to re-implemnent some classic AI systems described in the book *Paradigms of Articial Intelligence Programming*. The first of these is Eliza, the first chatbot.
+As described [in a separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza), I've decided to continue the programming project I started in 2019 by using my Lisp implementation - `JKL` - for some application development. Specifically I decided to re-implement one of the classic AI systems described in the book *Paradigms of Articial Intelligence Programming*: Eliza, the first chatbot.
 
-WORK-IN-PROGRESS - TODO - restructure the following
+Although `JKL` is a Lisp-like language, it is not directly based on Common Lisp. Instead, it is based on the minimalist teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md) which itself shares some features with the Clojure variant of Lisp. As a result, some Common Lisp features used in *Paradigms* are not available in `JKL`. In a few cases, Common Lisp and Clojure have different semantics, meaning that a direct implementation of the *Paradigms* code would result in unexpected (and probably wrong) behaviour.
 
-# Implementation considerations
+This post - which will continue to evolve during this project - describes the 'under-the-bonnet' changes that I had to make to `JKL` to provide the missing functionality required by Eliza, or to handle semantic differences between Common Lisp and `JKL`.
 
-*Paradigms* uses a dialect of Common Lisp circa 1990. `JKL` is a tiny language compared with Common Lisp, and is more directly influenced by the design of Clojure than the original Lisp. This has had three consequences:
+# Handling semantic variations
 
-* I've sometimes had to implement some Common Lisp functions (e.g. `char`) in `JKL` for direct compatability with the PAIP source
+TODO - describe `atomic?` as the `JKL` implementation of Common Lisp's `atom` function, because `atom` in `JKL` is actually a Clojure-like mutable value
 
-* I've sometimes had to use a different solution to that used by *Paradigms* because `JKL` has a mechanism that provides equivalent or close-enough semantics (e.g. `hashmaps` rather than Common Lisp association lists
-
-* In a few cases, Common Lisp functions used by *Paradigms* have completely different semantics in Clojure and thus in `JKL`. I've decided to prefer the Clojure semantics in these cases to retain consistency with `MAL` and, specifically, the `MAL` regression test suite. Accordingly, I've sometimes had to develop a `JKL` function that achieves the same effect. Notably `atomic?` as the `JKL` implementation of Common Lisp's `atom` function, because `atom` in `JKL` is actually a Clojure-like mutable value
-
-
-# Updates and fixes
-
-Revised `let*` to allow multiple body forms, the last of which is the return val. Previously `let*` only had a single body form, and a `do` was required if multiple forms were wanted. However, the new implementation is inconsistent with the `(do...)` equivalent, so should I added a TODO to consider refactoring the two.
-
-Refactored `try*`...`catch*`... so that syntax error checking of the `catch*` clause is now performed *before* the `try` is evaluated. The intent is to help avoid error-in-error-handler situations that could slip through user testing that doesn't explicitly check the thrown exception branch. The cost is to make correct code marginally less efficient.
-
-Checked that `JKL` can handle exceptions inside a `catch*` clause (to one level deep).
-
-Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following
-```
-; use the let binding to redefine + as -
-(let* (+ (fn* (a b) (- a b)))
-    (+ 1 2))
-```
-returns `-1`. Added a TODO to consider getting rid of these.
-
-Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that hosted code might introduce errors. Now `JKL` prints a more informative evaluation error message rather than just terminating.
-
-Started to rationalise the format of the error messages printed by built in functions.
-
-Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described below.
-
-Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros.
-
-# New features
+# New `JKL` functions
 
 ## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
 
@@ -86,3 +57,29 @@ JKL> (map f (1 2 3))
 Eval error: More parameters (bindings) than supplied values (expressions): (a b) ... (1)
 ```
 TODO - this fix is ongoing at the moment. Watch this space.  
+
+# Other updates and fixes
+
+Revised `let*` to allow multiple body forms, the last of which is the return val. Previously `let*` only had a single body form, and a `do` was required if multiple forms were wanted. However, the new implementation is inconsistent with the `(do...)` equivalent, so should I added a TODO to consider refactoring the two.
+
+Refactored `try*`...`catch*`... so that syntax error checking of the `catch*` clause is now performed *before* the `try` is evaluated. The intent is to help avoid error-in-error-handler situations that could slip through user testing that doesn't explicitly check the thrown exception branch. The cost is to make correct code marginally less efficient.
+
+Checked that `JKL` can handle exceptions inside a `catch*` clause (to one level deep).
+
+Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following
+```
+; use the let binding to redefine + as -
+(let* (+ (fn* (a b) (- a b)))
+    (+ 1 2))
+```
+returns `-1`. Added a TODO to consider getting rid of these.
+
+Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that hosted code might introduce errors. Now `JKL` prints a more informative evaluation error message rather than just terminating.
+
+Started to rationalise the format of the error messages printed by built in functions.
+
+Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described below.
+
+Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros.
+
+
