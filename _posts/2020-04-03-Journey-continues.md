@@ -8,24 +8,29 @@ date: 2020-04-03
 
 As described [in a separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza), I've decided to continue the programming project I started in 2019 by using my Lisp implementation - `JKL` - for some application development. Specifically I decided to re-implement one of the classic AI systems described in the book *Paradigms of Articial Intelligence Programming*: Eliza, the first chatbot.
 
-Although `JKL` is a Lisp-like language, it is not directly based on Common Lisp. Instead, it is based on the minimalist teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md) which itself shares some features with the Clojure variant of Lisp. As a result, some Common Lisp features used in *Paradigms* are not available in `JKL`. In a few cases, Common Lisp and Clojure have different semantics, meaning that a direct implementation of the *Paradigms* code would result in unexpected (and probably wrong) behaviour.
+The descriptions given in *Paradigms* assume that you are using the Common Lisp programming language. However, although `JKL` is a Lisp-like language, it is actually based on the minimalist teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md) which itself is derived from the Clojure variant of Lisp developed after *Paradigms* was written. As a result, some Common Lisp features used in *Paradigms* are not available in `JKL`. In a few cases, Common Lisp and Clojure have completely different semantics, meaning that a direct implementation of the *Paradigms* code would result in unexpected (and probably wrong) behaviour.
 
 This post - which will continue to evolve during this project - describes the 'under-the-bonnet' changes that I had to make to `JKL` to provide the missing functionality required by Eliza, or to handle semantic differences between Common Lisp and `JKL`.
 
 # Handling semantic variations
 
-TODO - describe `atomic?` as the `JKL` implementation of Common Lisp's `atom` function, because `atom` in `JKL` is actually a Clojure-like mutable value
+## Atoms
 
-# New `JKL` functions
+In Clojure, MAL and `JKL`, atoms are in effect variables that hold values that can be updated using the built-in `swap` function. In contrast, in Common Lisp, `atom` is a function that returns `T` for anything that isn't a cons (a list cell). I decided to stick with `JKL`'s semantics for atoms, so had to write an `atomic?` function that has the same effect as Common Lisp's `atom`. The resultant `JKL` code is as follows:
+```
+(def! atomic? (fn* (x)
+	(if (sequential? x)
+		(if (empty? x)
+			true
+			false)
+		true)))
+```
 
-## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
+# New `JKL` functionality
 
-* `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. This may get added in due course
-* `symbol-name` - returns a string which is the print-name of a symbol, or throws an error if given a non-symbol
+## The `and` macro
 
-## Added `and`
-
-Added the `and` macro using the existing `or` macro as a model. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise evaluates all of its arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
+I added an `and` macro using `JKL`'s existing `or` macro as a model. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise evaluates all of its arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
 ```
 (defmacro! and (fn* (& and-args)
 	(if (empty? and-args)
@@ -40,11 +45,11 @@ Added the `and` macro using the existing `or` macro as a model. The semantics of
 						(and ~@(rest and-args))
 						~and-var)))))))
 ```
-Notice that, as per Common Lisp, `(atom)` returns `true`.
+Notice that, as in Common Lisp, `(atom)` returns `true`.
 
 ## Improved `map` implementation
 
-As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I decided to have a go at extending `map` to have similar semantics.
+As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore decided to extend `map` to have similar semantics.
 
 Internally, the `JKL` implementation of `map` makes a new sequence to hold the result, and then iterates over the `s` applying `f` to each element in turn. One consequence, which I hadn't thought  through before, is that `f` must take a single argument. Consider the following extract from the REPL....
 
@@ -56,7 +61,14 @@ JKL> (f 1 2)
 JKL> (map f (1 2 3))
 Eval error: More parameters (bindings) than supplied values (expressions): (a b) ... (1)
 ```
-TODO - this fix is ongoing at the moment. Watch this space.  
+TODO - this fix is ongoing at the moment. Watch this space.
+
+## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
+
+I also added several Common Lisp / Clojure functions to `JKL` as built-in functions implemented using C# (the language in which `JKL` itself is implemented). The new functions are as follows:  
+
+* `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. This may get added in due course
+* `symbol-name` - returns a string which is the print-name of a symbol, or throws an error if given a non-symbol
 
 # Other updates and fixes
 
