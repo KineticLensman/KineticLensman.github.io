@@ -80,13 +80,12 @@ I made several other enhancements based on experience using `JKL`. Some of these
 
 * Checked that `JKL` can handle exceptions inside a `catch*` clause (to one level deep).
 
-* Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following
+* Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following returns `-1`. I added a TODO to consider getting rid of these.
 ```
 ; use the let binding to redefine + as -
 (let* (+ (fn* (a b) (- a b)))
     (+ 1 2))
 ```
-returns `-1`. I added a TODO to consider getting rid of these.
 
 * Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that hosted code might introduce errors. Now `JKL` prints a more informative evaluation error message rather than just terminating.
 
