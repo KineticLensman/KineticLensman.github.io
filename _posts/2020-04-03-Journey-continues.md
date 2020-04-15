@@ -67,32 +67,32 @@ TODO - this fix is ongoing at the moment. Watch this space.
 
 I also added several Common Lisp / Clojure functions to `JKL` as built-in functions implemented using C# (the language in which `JKL` itself is implemented). The new functions are as follows:  
 
-* `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. This may get added in due course
+* `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. Such a class might get added in due course
 * `symbol-name` - returns a string which is the print-name of a symbol, or throws an error if given a non-symbol
 
 # Other updates and fixes
 
 I made several other enhancements based on experience using `JKL`. Some of these were made before I started the current Eliza project, but I've only just got around to writing them up now. In approximately chronological order, I:
 
-* Revised `let*` to allow multiple body forms, the last of which is the return val. Previously `let*` only had a single body form, and a `do` was required if multiple forms were wanted. However, the new implementation is inconsistent with the `(do...)` equivalent, so should I added a TODO to consider refactoring the two.
+* Revised `let*` to allow multiple body forms, the last of which is the return val. Previously `let*` only had a single body form, and a `do` was required if multiple forms were wanted. However, the new implementation is inconsistent with the `(do...)` equivalent, so  I added a TODO to consider refactoring the two
 
-* Refactored `try*`...`catch*`... so that syntax error checking of the `catch*` clause is now performed *before* the `try` is evaluated. The intent is to help avoid error-in-error-handler situations that could slip through user testing that doesn't explicitly check the thrown exception branch. The cost is to make correct code marginally less efficient.
+* Refactored `try*`...`catch*`... so that syntax error checking of the `catch*` clause is now performed *before* the `try` is evaluated. The intent is to help avoid error-in-error-handler situations that could slip through user testing that doesn't explicitly check the thrown exception branch. The cost is to make correct code marginally less efficient
 
-* Checked that `JKL` can handle exceptions inside a `catch*` clause (to one level deep).
+* Checked that `JKL` can handle exceptions inside a `catch*` clause (to one level deep)
 
-* Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following returns `-1`. I added a TODO to consider getting rid of these.
+* Noticed that `let*` bindings can include symbols such as `+` so that `(let* (+ 1) +)` returns `1` and the following returns `-1`. I added a TODO to consider getting rid of these
 ```
 ; use the let binding to redefine + as -
 (let* (+ (fn* (a b) (- a b)))
     (+ 1 2))
 ```
 
-* Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that hosted code might introduce errors. Now `JKL` prints a more informative evaluation error message rather than just terminating.
+* Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that thse cases might be bugs in code written by `JKL` users. Now `JKL` prints a more informative evaluation error message rather than just terminating
 
-* Started to rationalise the format of the error messages printed by built in functions.
+* Started to rationalise the format of the error messages printed by built in functions
 
-* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described below.
+* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described above
 
-* Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros.
+* Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros
 
 
