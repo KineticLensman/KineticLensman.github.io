@@ -87,7 +87,7 @@ I made several other enhancements based on experience using `JKL`. Some of these
     (+ 1 2))
 ```
 
-* Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated this as an internal error without considering that thse cases might be bugs in code written by `JKL` users. Now `JKL` prints a more informative evaluation error message rather than just terminating
+* Changed the error handling that results when non-numbers are used as arguments for numeric functions (e.g. `(+ 1 "a")`). I'd previously treated these as internal errors without considering that these cases might be bugs in code written by `JKL` users. Now `JKL` prints a more informative evaluation error message rather than just terminating
 
 * Started to rationalise the format of the error messages printed by built in functions
 
