@@ -14,9 +14,9 @@ This page is a work-in-progress, and I'll update it as and when I make progress 
 
 # Going under the bonnet
 
-`JKL` is a tiny programming language whose decevlopment was intended to teaching interpreter-writing techniques, and it lacks some of the functionality needed to build serious applications. I was therefore going to have to continue to develop the language itself, adding new functions and fixing bugs that emerged from using it in anger.
+`JKL` is a tiny programming language whose development was intended to teaching interpreter-writing techniques, and it lacks some of the functionality needed to build serious applications. I was therefore going to have to continue to develop `JKL` itself, adding new functions and fixing bugs that emerged from using it in anger.
 
-A [separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/03/Journey-continues) describes this 'under the bonnet' work.
+A [separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/03/Journey-continues) describes these fixes and enhancements.
 
 # Eliza - the first chatbot
 
