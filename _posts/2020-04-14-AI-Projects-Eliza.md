@@ -10,7 +10,7 @@ At the beginning of 2019 [I decided to get back into coding](https://www.non-kin
 
 A year later, I decided to use `JKL` to re-implement one of the classic Artificial Intelligence (AI) systems pioneered in the 1960s and 1970s, as described by Peter Norvig in his excellent book Paradigms of Artificial Intelligence Programming (hereafter '*Paradigms*'). My primary goal was to conduct an interesting exercise in retrocomputing. This evolving post charts my progress on this task.
 
-I also wanted to give `JKL` a serious work-out, given that it is a tiny programming language that lacks some of the functionality needed to build serious applications. A [separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/03/Journey-continues) describes the enhancements (and fixes) that I made as a result of using `JKL` for application development.
+I also wanted to give `JKL` a serious work-out, given that it is a tiny programming language that lacks some of the functionality needed to build serious applications. A [separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/03/Journey-continues) describes the enhancements (and fixes) that I made as a result of using `JKL` for application development. 
 
 # Eliza - the first chatbot
 
