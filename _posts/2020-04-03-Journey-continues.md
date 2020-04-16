@@ -16,7 +16,9 @@ This post - which will continue to evolve during this project - describes the 'u
 
 ## Atoms
 
-In Clojure, MAL and `JKL`, atoms are in effect variables that hold values that can be updated using the built-in `swap` function. In contrast, in Common Lisp, `atom` is a function that returns `T` for anything that isn't a cons (a list cell). I decided to stick with `JKL`'s semantics for atoms, so had to write an `atomic?` function that has the same effect as Common Lisp's `atom`. The resultant `JKL` code is as follows:
+In Clojure, MAL and `JKL`, atoms are in effect variables that hold values that can be updated using the built-in `swap` function. In contrast, in Common Lisp, `atom` is a function that returns `T` for anything that isn't a cons (a list cell), and where `(atom)` returns `T`.
+
+To maintain consistency between `JKL` and Clojure, I chose `JKL`'s semantics for `atom`, so had to write an `atomic?` function that has the same effect as Common Lisp's `atom`. The resultant `JKL` code is as follows:
 ```
 (def! atomic? (fn* (x)
 	(if (sequential? x)
@@ -45,8 +47,6 @@ I added an `and` macro using `JKL`'s existing `or` macro as a model. The semanti
 						(and ~@(rest and-args))
 						~and-var)))))))
 ```
-Notice that, as in Common Lisp, `(atom)` returns `true`.
-
 ## Improved `map` implementation
 
 As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore decided to extend `map` to have similar semantics.
