@@ -8,15 +8,21 @@ date: 2020-04-03
 
 As described [in a separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza), I've decided to continue the programming project I started in 2019 by using my Lisp implementation - `JKL` - for some application development. Specifically I decided to re-implement one of the classic AI systems described in the book *Paradigms of Articial Intelligence Programming*: Eliza, the first chatbot.
 
-The descriptions given in *Paradigms* assume that you are using the Common Lisp programming language. However, although `JKL` is a Lisp-like language, it is actually based on the minimalist teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md) which itself is derived from the Clojure variant of Lisp developed after *Paradigms* was written. As a result, some Common Lisp features used in *Paradigms* are not available in `JKL`. In a few cases, Common Lisp and Clojure have completely different semantics, meaning that a direct implementation of the *Paradigms* code would result in unexpected (and probably wrong) behaviour.
+The descriptions given in *Paradigms* assume that you are using the Common Lisp programming language. However, although `JKL` is a Lisp-like language, it is actually based on the teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md) which itself is derived from the Clojure variant of Lisp developed after *Paradigms* was written. Furthermore, MAL is an intentionally minimalist language intended to showcase language implementation techniques, not to support serious application development, and does not have a comprehensive 'standard library' of functions. And last but not least, data structures in `JKL`, like those in Clojure and MAL, are by default persistent and immutable, compared with those in Common Lisp whose variables can  be modified or redefined once created.
 
-This post - which will continue to evolve during this project - describes the 'under-the-bonnet' changes that I had to make to `JKL` to provide the missing functionality required by Eliza, or to handle semantic differences between Common Lisp and `JKL`.
+For these reasons, I can't directly use the algorithms provided in *Paradigms* to implement Eliza in `JKL`. I have therefore had to 
+* Add functionality to `JKL` where it is obviously mising (e.g. for list and string processing). Incidentally, this gives me an excuse to continue to play around with the Visual Studio C# environment within which `JKL` was developed
+* Develop `JKL` alternatives to the *Paradigms* approach that better retain the immutable, functional spirit of the original Clojure semantics
+
+Where there was a choice between these two approaces, I opted for 'maintain-Clojure-consistency' as my overarching principle. 
+
+This post - which will continue to evolve during this project - describes these changes. 
 
 # Handling semantic variations
 
 ## Atoms
 
-In Clojure, MAL and `JKL`, atoms are in effect variables that hold values that can be updated using the built-in `swap` function. In contrast, in Common Lisp, `atom` is a function that returns `T` for anything that isn't a cons (a list cell), and where `(atom)` returns `T`.
+As already stated, data structures in `JKL` are immutable and persistent. The exceptions are referred to as atoms, values that are created using the `atom` function and updated using the `swap` function. In contrast, inCommon Lisp, `atom` is a function that returns `T` for anything that isn't a cons (a list cell), and where `(atom)` returns `T`.
 
 To maintain consistency between `JKL` and Clojure, I chose `JKL`'s semantics for `atom`, so had to write an `atomic?` function that has the same effect as Common Lisp's `atom`. The resultant `JKL` code is as follows:
 ```
