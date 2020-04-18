@@ -51,21 +51,24 @@ As can be seen, it uses the Common Lisp `loop` macro to repeatedly read lines of
 The options here were therefore either to
 * Directly use `JKL`'s existing recursion capability. This would be the simplest, but wouldn't offer any opportunities to enhance `JKL` itself, which is one of my project goals. 
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function. 
-* implemenent an interation mechanism in `JKL`
+* implemenent an interation mechanism in `JKL` based on the `loop` macro used in Common Lisp and Clojure.
 
-Recursion is fundamental to Lisp and would be the quickest and easiest way to proceed. However, because I'm no particular hurry, and continusing to enhance `JKL` is one of my project goals, I decided to implement an iterator. At a quick glance, there seem to be two ways of doing this. The most obvious is to create a `loop` macro analagous to Common Lisp's. The second is to create a `recur` special form (as per Clojure) which would 
-
-either modelled on the `loop` macro that is found in Common Lisp and Clojure, or the `recur` special form used in Clojure (and whose implementation is actually suggested in the MAL guide an an exercise for the reader).
-
-Because I am in no particular hurry here, and I'm keen to 
-
-The original MAL on which `JKL` is based doesn't have an iteration mechanism such as the `loop` construct as found in Common Lisp and Clojure. `JKL` does provide recursion, which can often be used in place of iteration, but sometimes `loop` is more convenient, for example Eliza's top-level loop. 
-
-Consider the following:
+How is `loop` implemented in Common Lisp? To find out, I looked at the [source code for `loop`](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in the open source [Steel Bank Common Lisp](https://github.com/sbcl/sbcl), where I found the following:
 
 ```
+(defun loop-standard-expansion (keywords-and-forms environment universe)
+  (if (and keywords-and-forms (symbolp (car keywords-and-forms)))
+      (loop-translate (make-loop keywords-and-forms environment universe))
+      (let ((tag (gensym)))
+        `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag))))))
 
+(sb-xc:defmacro loop (&environment env &rest keywords-and-forms)
+  (loop-standard-expansion keywords-and-forms
+                           env
+                           *loop-ansi-universe*))
 ```
+This shows that SBCL uses the Lisp equivalent of a `goto` statement. 
+
 
 ## The `and` macro
 
