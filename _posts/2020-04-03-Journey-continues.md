@@ -36,6 +36,37 @@ Because I'm prioritizing Clojure compliance, I had to write an `atomic?` functio
 
 # New `JKL` functionality
 
+## Looping
+
+The top level of the Eliza code presented in *Paradigms* is as follows:
+```
+(defun eliza ()
+  "Respond to user input using pattern matching rules."
+  (loop
+   (print 'eliza>)
+   (write (flatten (use-eliza-rules (read))) :pretty t)))
+```
+As can be seen, it uses the Common Lisp `loop` macro to repeatedly read lines of input from the keyboard before passing them to the Eliza rules processor. However, in common with MAL, `JKL` lacks `loop`, relying on efficient recursion instead.
+
+The options here were therefore either to
+* Directly use `JKL`'s existing recursion capability. This would be the simplest, but wouldn't offer any opportunities to enhance `JKL` itself, which is one of my project goals. 
+* Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function. 
+* implemenent an interation mechanism in `JKL`
+
+Recursion is fundamental to Lisp and would be the quickest and easiest way to proceed. However, because I'm no particular hurry, and continusing to enhance `JKL` is one of my project goals, I decided to implement an iterator. At a quick glance, there seem to be two ways of doing this. The most obvious is to create a `loop` macro analagous to Common Lisp's. The second is to create a `recur` special form (as per Clojure) which would 
+
+either modelled on the `loop` macro that is found in Common Lisp and Clojure, or the `recur` special form used in Clojure (and whose implementation is actually suggested in the MAL guide an an exercise for the reader).
+
+Because I am in no particular hurry here, and I'm keen to 
+
+The original MAL on which `JKL` is based doesn't have an iteration mechanism such as the `loop` construct as found in Common Lisp and Clojure. `JKL` does provide recursion, which can often be used in place of iteration, but sometimes `loop` is more convenient, for example Eliza's top-level loop. 
+
+Consider the following:
+
+```
+
+```
+
 ## The `and` macro
 
 I added an `and` macro using `JKL`'s existing `or` macro as a model. The semantics of `and` in `JKL` match that of Clojure, namely that `(and)` returns true but otherwise evaluates all of its arguments until any one returns `false` or `nil`. The value of the last non-false argument is returned. The resultant code is
