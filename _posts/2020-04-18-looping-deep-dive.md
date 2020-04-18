@@ -4,7 +4,9 @@ title: "Make a Lisp [7] Deep dive: looping"
 date: 2020-04-18
 ---
 
-# Looping deep dive
+Please see [this post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza) for the background to this content.
+
+# The need for a loop capability in `JKL`
 
 The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repeatedly read lines of input from the keyboard before passing them to the Eliza rules processor:
 ```
@@ -21,7 +23,7 @@ However, in common with MAL, `JKL` lacks `loop`, relying on efficient recursion 
 
 As evidenced by Clojure, a Lisp implemnentation can include both `recur` and `loop`, so there isn't an irrevocable choice between them. I therefore decided to explore both before picking one to let me proceed with the Eliza project.
 
-How is `loop` implemented in Common Lisp? To find out, I looked at the [source code for `loop`](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in the open source [Steel Bank Common Lisp](https://github.com/sbcl/sbcl), where I found the following:
+I decided to start by finding out how is `loop` implemented in Common Lisp. Specifically, I looked at the [source code for `loop`](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in [Steel Bank Common Lisp](https://github.com/sbcl/sbcl), where I found the following:
 
 ```
 (defun loop-standard-expansion (keywords-and-forms environment universe)
@@ -35,5 +37,9 @@ How is `loop` implemented in Common Lisp? To find out, I looked at the [source c
                            env
                            *loop-ansi-universe*))
 ```
-This shows that SBCL uses the Lisp equivalent of a `goto` statement. 
+There is quite a lot of SBCL boilerplate there but the form
+```
+`(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
+```
+shows that the core of `loop` is the Lisp equivalent of a `goto` statement. 
 
