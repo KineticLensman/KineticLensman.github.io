@@ -16,14 +16,14 @@ The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repea
    (print 'eliza>)
    (write (flatten (use-eliza-rules (read))) :pretty t)))
 ```
-However, in common with MAL, `JKL` lacks `loop`, relying on efficient recursion instead. My options were therefore to
+I can't implement this directly in `JKL` because, in common with MAL, `JKL` lacks `loop`, relying on recursion instead. My options were therefore to
 * Directly use `JKL`'s existing recursion capability. This would be the simplest option, but wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 
 As evidenced by Clojure, a Lisp implementation can include both `recur` and `loop`, so there isn't an irrevocable choice between them. I therefore decided to explore both before picking one to let me proceed with the Eliza project.
 
-I decided to start by finding out how is `loop` implemented in Common Lisp. DuckDuckGo led me to the [source code for `loop`](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in [Steel Bank Common Lisp](https://github.com/sbcl/sbcl):
+I decided to start by finding out how is `loop` implemented in Common Lisp. DuckDuckGo led me to the source code for the [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in [Steel Bank Common Lisp](https://github.com/sbcl/sbcl):
 
 ```
 (defun loop-standard-expansion (keywords-and-forms environment universe)
@@ -37,9 +37,9 @@ I decided to start by finding out how is `loop` implemented in Common Lisp. Duck
                            env
                            *loop-ansi-universe*))
 ```
-There is quite a lot of SBCL boilerplate there but the form
+The line
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-shows that the core of `loop` is actually the Lisp equivalent of a `goto` statement. 
+shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. 
 
