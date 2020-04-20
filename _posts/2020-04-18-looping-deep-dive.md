@@ -23,7 +23,7 @@ I can't implement this directly in `JKL` because, in common with MAL, `JKL` lack
 
 As evidenced by Clojure, a Lisp implementation can include both `recur` and `loop`, so there isn't an irrevocable choice between them. I therefore decided to explore both before picking one to let me proceed with the Eliza project.
 
-I decided to start by finding out how is `loop` implemented in Common Lisp. DuckDuckGo led me to the source code for the [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) used in [Steel Bank Common Lisp](https://github.com/sbcl/sbcl):
+I decided to start by finding out how is `loop` implemented in Common Lisp, which meant searching for an implementation where the source code is in the public domain. One such implementation is [Steel Bank Common Lisp](https://github.com/sbcl/sbcl), which has the following [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp)
 
 ```
 (defun loop-standard-expansion (keywords-and-forms environment universe)
