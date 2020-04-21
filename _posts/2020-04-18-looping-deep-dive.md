@@ -21,7 +21,11 @@ I can't implement this directly in `JKL` because, in common with MAL, `JKL` lack
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 
+# Deciding how to implement `loop` in `JKL`
+
 As evidenced by Clojure, a Lisp implementation can include both `recur` and `loop`, so there isn't an irrevocable choice between them. I therefore decided to explore both before picking one to let me proceed with the Eliza project.
+
+## Looping in Common Lisp
 
 I decided to start by finding out how is `loop` implemented in Common Lisp, which meant searching for an implementation where the source code is in the public domain. One such implementation is [Steel Bank Common Lisp](https://github.com/sbcl/sbcl), which has the following [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp)
 
@@ -41,5 +45,11 @@ The line
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. 
+shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't at first glance the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of the mechanisms the Common Lisp provides for controlling loop-based iteration, and these are a complex subject in their own right.
+
+## Looping in Clojure
+
+Clojure's looping mechanism is very different to Common Lisp's. Specifically, Clojure has two special forms: `loop` and `recur`, as described in the [Clojure reference manual](https://clojure.org/reference/special_forms). `loop` is like `let`, except that it sets up a recursion point containing a body of forms. `recur` rebinds the `loop` variables and control jumps back to the beginning of the `loop`. If `recur` is used outside a loop, control jumps back to the start of the function in which it occurs. `recur` must be used in the so-called tail position of a function or a loop (its use in other places is an error). 
+
+Given that `JKL` is very loosely based on Clojure rather than Common Lisp, my gut instinct is to write something analagous to Clojure's `loop` - `recur` mechanism.
 
