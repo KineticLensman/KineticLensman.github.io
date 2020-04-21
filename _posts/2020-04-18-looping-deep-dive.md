@@ -51,6 +51,16 @@ shows that the core of `loop` uses the `go` special form (the Lisp equivalent of
 
 Clojure's looping mechanism is very different to Common Lisp's. Specifically, Clojure has two special forms: `loop` and `recur`, as described in the [Clojure reference manual](https://clojure.org/reference/special_forms). `loop` is like `let`, except that it sets up a recursion point containing a body of forms. `recur` rebinds the `loop` variables and control jumps back to the beginning of the `loop`. If `recur` is used outside a loop, control jumps back to the start of the function in which it occurs. `recur` must be used in the so-called tail position of a function or a loop (its use in other places is an error). 
 
+By way of example, here is an example from the reference manual of `loop` and `recur`:
+```
+(def factorial
+  (fn [n]
+    (loop [cnt n acc 1]
+       (if (zero? cnt)
+            acc
+          (recur (dec cnt) (* acc cnt))))))
+```
+
 Given that `JKL` is very loosely based on Clojure rather than Common Lisp, my gut instinct is to write something analagous to Clojure's `loop` - `recur` mechanism. Furthermore, because `loop` is similar to `let`, I think I can get a lot of the necessary functionality by copying and modifying the existing `let` C# code. Which, incidentally, is as follows:
 ```
 case "let*":
