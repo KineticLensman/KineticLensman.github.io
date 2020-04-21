@@ -51,5 +51,49 @@ shows that the core of `loop` uses the `go` special form (the Lisp equivalent of
 
 Clojure's looping mechanism is very different to Common Lisp's. Specifically, Clojure has two special forms: `loop` and `recur`, as described in the [Clojure reference manual](https://clojure.org/reference/special_forms). `loop` is like `let`, except that it sets up a recursion point containing a body of forms. `recur` rebinds the `loop` variables and control jumps back to the beginning of the `loop`. If `recur` is used outside a loop, control jumps back to the start of the function in which it occurs. `recur` must be used in the so-called tail position of a function or a loop (its use in other places is an error). 
 
-Given that `JKL` is very loosely based on Clojure rather than Common Lisp, my gut instinct is to write something analagous to Clojure's `loop` - `recur` mechanism.
+Given that `JKL` is very loosely based on Clojure rather than Common Lisp, my gut instinct is to write something analagous to Clojure's `loop` - `recur` mechanism. Furthermore, because `loop` is similar to `let`, I think I can get a lot of the necessary functionality by copying and modifying the existing `let` C# code. Which, incidentally, is as follows:
+```
+case "let*":
+  if (ast.Count() < 3)
+  {
+    throw new JKLEvalError("'let*' should have two arguments (bindings-sequence and result), but instead had " + (ast.Count() - 1));
+  }
+
+  // Extract the first parameter - the bindings list. E.g. (p (+ 2 3) q (+ 2 p))
+  a1 = ast[1];
+  if (!(a1 is JKLSequence a1Seq))
+  {
+    throw new JKLEvalError("'let*' should be followed by a non-empty bindings-sequence and a result form, but got '" + a1 + "'");
+  }
+
+  // Create a new Env to hold the symbols defined by the let*. It's discarded at the end of the let.
+  Env TempLetEnv = new Env(env);
+
+  // Process each pair of entries in the bindings list.
+  for (int i = 0; i < a1Seq.Count(); i += 2)
+  {
+    // The first element should be a 'key' symbol. E.g. 'p'.
+    if (!(a1Seq[i] is JKLSym bindingKey))
+    {
+      throw new JKLEvalError("'let' expected symbol but got: '" + a1Seq[i].ToString(true) + "'");
+    }
+    // The second element (e.g. (+ 2 3)) is the value of the key symbol in Let's environment
+    JKLVal val = EVAL(a1Seq[i + 1], TempLetEnv);
+    // Store the new value in the environment.
+    TempLetEnv.Set(bindingKey, val);
+  }
+  // The let body is evaluated in the temporary env we've just created.
+  env = TempLetEnv;
+
+  // EVAL all but the last result form.
+  for( int iBody = 2; iBody < ast.Count()-1; iBody++)
+  {
+    EVAL(ast[iBody], env);
+  }
+
+  // Finally, using TCO, EVAL the last body form to get the Let's result.
+  OrigAst = ast[ast.Count() - 1];
+  break;
+
+```
 
