@@ -45,7 +45,7 @@ The line
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't at first glance the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of the mechanisms the Common Lisp provides for controlling loop-based iteration, and these are a complex subject in their own right.
+shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't at first glance the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of the mechanisms Common Lisp provides for controlling loop-based iteration, and these are a complex subject in their own right.
 
 ## Looping in Clojure
 
@@ -61,6 +61,6 @@ By way of example, here is an example from the reference manual of `loop` and `r
           (recur (dec cnt) (* acc cnt))))))
 ```
 
-Given that `JKL` is very loosely based on Clojure rather than Common Lisp, my gut instinct is to write something analagous to Clojure's `loop` - `recur` mechanism. Because `loop` is similar to `let`, I can probably re-use some of my existing `let` code, notably the part that binds the loop veriables.
+Because `JKL` is conceptually closer to Clojure than Common Lisp, my initial thinking is to use the `loop` - `recur` approach. 
 
 
