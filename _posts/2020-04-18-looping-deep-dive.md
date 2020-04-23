@@ -61,6 +61,14 @@ By way of example, here is an example from the reference manual of `loop` and `r
           (recur (dec cnt) (* acc cnt))))))
 ```
 
-Because `JKL` is conceptually closer to Clojure than Common Lisp, my initial thinking is to use the `loop` - `recur` approach. 
+Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to aim for a `JKL` equivalent of Clojure's `loop` - `recur` approach.
+
+# Loop implementation options
+
+Having made this decision, the next challenge was figuring out how to implement it. `loop` and `recur` are special forms, analogous to other `JKL` constructs such as `def!`, `let*`, `do`, etc, all of which sit within an `EVAL` function coded in C#. Logically, `loop` and `recur` would be added there as well. However, one big difference is none of the existing special forms ever explicitly return to a previous execution state in the way that `recur` needs to do. Instead, they typically process their arguments and return or recursively invoke `EVAL` to continue execution.
+
+I spent some time wondering if I needed to add additional information to EVAL or somehow loop within it so that `recur` can send control back to `loop`. I then realised that there is perhaps an existing mechanism that I can repurpose. Specifically, `EVAL` builds `env` objects when it assigns expressions to bindings. At present, the bindings list isn't itself persisted. But, I wondered, if the `env` objects kept a note of the bindings, recur could perhaps access and re-use these. 
+
+TBD - I'm now exploring this idea. Watch this space
 
 
