@@ -16,8 +16,8 @@ The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repea
    (print 'eliza>)
    (write (flatten (use-eliza-rules (read))) :pretty t)))
 ```
-I can't implement this directly in `JKL` because, in common with MAL, `JKL` lacks `loop`, relying on recursion instead. My options were therefore to
-* Directly use `JKL`'s existing recursion capability. This would be the simplest option, but wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
+Unfortunately, I can't implement this directly in `JKL` because, in common with MAL, `JKL` lacks `loop`. relying on recursion instead. My options were therefore to
+* Use recursion instead of iteration. This would be the simplest option, but I doscounted it because it wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
 
@@ -67,7 +67,7 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 Having made this decision, the next challenge was figuring out how to implement it. `loop` and `recur` are special forms, analogous to other `JKL` constructs such as `def!`, `let*`, `do`, etc, all of which sit within an `EVAL` function coded in C#. Logically, `loop` and `recur` would be added there as well. However, one big difference is none of the existing special forms ever explicitly return to a previous execution state in the way that `recur` needs to do. Instead, they typically process their arguments and return or recursively invoke `EVAL` to continue execution.
 
-I spent some time wondering if I needed to add additional information to EVAL or somehow loop within it so that `recur` can send control back to `loop`. I then realised that there is perhaps an existing mechanism that I can repurpose. Specifically, `EVAL` builds `env` objects when it assigns expressions to bindings. At present, the bindings list isn't itself persisted. But, I wondered, if the `env` objects kept a note of the bindings, recur could perhaps access and re-use these. 
+I spent some time wondering if I needed to add additional information to EVAL or somehow loop within it so that `recur` can send control back to `loop`. I then realised that there is perhaps an existing mechanism that I can repurpose. Specifically, `EVAL` builds `env` objects when it assigns expressions to bindings. At present, the bindings list isn't itself persisted. But, I wondered, if the `env` objects kept a note of the bindings, `recur` could perhaps access and re-use these. 
 
 TBD - I'm now exploring this idea. Watch this space
 
