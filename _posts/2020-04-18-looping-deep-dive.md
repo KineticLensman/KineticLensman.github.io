@@ -16,7 +16,7 @@ The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repea
    (print 'eliza>)
    (write (flatten (use-eliza-rules (read))) :pretty t)))
 ```
-Unfortunately, I can't implement this directly in `JKL` because, in common with MAL, `JKL` lacks `loop`. relying on recursion instead. My options were therefore to
+Unfortunately, I can't implement this directly in `JKL` because it lacks a `loop`-like iteration mechansism (like MAL, `JKL` relies on recursion). My options were therefore to
 * Use recursion instead of iteration. This would be the simplest option, but I doscounted it because it wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
