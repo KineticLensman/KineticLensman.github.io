@@ -63,11 +63,14 @@ By way of example, here is an example from the reference manual of `loop` and `r
 
 Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to aim for a `JKL` equivalent of Clojure's `loop` - `recur` approach.
 
-# Loop implementation options
+# Implementing `loop` / `recur`
 
-Having made this decision, the next challenge was figuring out how to implement it. `loop` and `recur` are special forms, analogous to other `JKL` constructs such as `def!`, `let*`, `do`, etc, all of which sit within an `EVAL` function coded in C#. Logically, `loop` and `recur` would be added there as well. However, one big difference is none of the existing special forms ever explicitly return to a previous execution state in the way that `recur` needs to do. Instead, they typically process their arguments and return or recursively invoke `EVAL` to continue execution.
+The `recur` special form is called from within `EVAL` and works by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing new values for the `loop` variables or the function arguments. Once the new bindings have been established, the forms in the body of the `loop` or function are re-evaluated. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, or until some resource runs out.
 
-I spent some time wondering if I needed to add additional information to EVAL or somehow loop within it so that `recur` can send control back to `loop`. I then realised that there is perhaps an existing mechanism that I can repurpose. Specifically, `EVAL` builds `env` objects when it assigns expressions to bindings. At present, the bindings list isn't itself persisted. But, I wondered, if the `env` objects kept a note of the bindings, `recur` could perhaps access and re-use these. 
+Unfortunately, there is no precedent for this process in `JKL` (or MAL). None of the existing special forms explicitly return control to a previous point. Instead, they process their arguments and then either return a value from `EVAL` or recursively invoke `EVAL` to continue execution (using Tail Call Optimization if possible).
+
+So some new mechanisms are going to be needed
+
 
 TBD - I'm now exploring this idea. Watch this space
 
