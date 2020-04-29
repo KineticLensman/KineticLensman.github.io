@@ -8,15 +8,15 @@ date: 2020-04-03
 
 As described [in a separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza), I've decided to continue the programming project I started in 2019 by using my Lisp implementation - `JKL` - for some application development. Specifically I decided to re-implement one of the classic AI systems described in the book *Paradigms of Articial Intelligence Programming*: Eliza, the first chatbot.
 
-Part of the challenge is that I can't directly code in `JKL` the Eliza algorithms provided in *Paradigms*. Specifically, *Paradigms* decribes Eliza using [Common Lisp](https://common-lisp.net/). However, although `JKL` is a Lisp-like language, it is actually based on the teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md), which itself is derived from [Clojure](https://clojure.org/index) - a variant of Lisp developed after *Paradigms* was written. Because MAL is a minimal language intended to showcase Lisp implementation techniques, not to support serious application development, it lacks a 'standard library' of functions. Furthermore, data structures in `JKL`, like those in Clojure and MAL, are by default persistent and immutable, compared with those in Common Lisp whose variables can  be modified or redefined once created.
+Part of the challenge is that I can't directly code in `JKL` 1.0 the Eliza algorithms provided in *Paradigms*. Specifically, *Paradigms* decribes Eliza using [Common Lisp](https://common-lisp.net/). However, although `JKL` is a Lisp-like language, it is actually based on the teaching language [MAL](https://github.com/kanaka/mal/blob/master/process/guide.md), which itself is derived from [Clojure](https://clojure.org/index) - a variant of Lisp developed after *Paradigms* was written. Because MAL is a minimal language intended to showcase Lisp implementation techniques, not to support serious application development, it lacks a 'standard library' of functions. Furthermore, data structures in `JKL`, like those in Clojure and MAL, are by default persistent and immutable, compared with those in Common Lisp whose variables can  be modified or redefined once created.
 
 For these reasons, I have had to 
-* Add functionality to `JKL` where it is obviously mising (e.g. for list and string processing). Incidentally, this gives me an excuse to continue to play around with the Visual Studio C# environment within which `JKL` was developed
+* Add functionality to `JKL` 1.0 where it is obviously mising (e.g. for list and string processing). Incidentally, this gives me an excuse to continue to play around with the Visual Studio C# environment I used to develop `JKL`
 * Develop `JKL` alternatives to the *Paradigms* approach that better retain the immutable, functional spirit of the original Clojure semantics
 
 Where there was a choice between these two approaches, I opted for 'maintain-Clojure-consistency' as my overarching principle. 
 
-This post - which will continue to evolve during this project - describes these changes. 
+This post - which will continue to evolve during this project - describes the enhacements to `JKL` 1.0. 
 
 # Handling semantic variations
 
