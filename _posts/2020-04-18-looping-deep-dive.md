@@ -65,27 +65,32 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 # Implementing `loop` / `recur`
 
-## Some background
+## The need for some design  thinking
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the issues involved - since `loop` / `recur` seemed like it would be the most complex change I'd yet made to the baseline `JKL` as described by the MAL guidelines. I spread this thinking out over several days, and the rest of this section captures my conclusions. In retrospect, this thinking became a high-level design of the proposed solution, although I hadn't planned that when I started this part of the post (which up to now had been a sort of stream of consciousness).
+At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the issues involved - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I spread this thinking out over several days. In retrospect, this thinking became a high-level design of the proposed solution, although I hadn't planned that when I started this part of the post (which up to now had been a sort of stream of consciousness).
 
-First, some background. In `JKL`, the `EVAL` function is essentially a large C# switch statement whose cases correspond to the various special forms (`fn`, `do`, `def!`, `let*`, etc) in `JKL`. Each special form:
+## The starting point - `EVAL` in `JKL` 1.0
+
+The first thing I had to do was to fully understand the context for designing the new functionality, which meant re-acquainting myself with some of the basics of evaluation in `JKL` itself.
+
+The `EVAL` function is essentially a large C# switch statement whose cases correspond to the various special forms (`fn`, `do`, `def!`, `let*`, etc) in `JKL`. Each special form:
 * Processes its arguments and executes the statements in its body, if any, and then either
 * Directly returns a `JKL` value, OR
 * Returns the value calculated by a recursive call to `EVAL`, OR
 * Where Tail Call Optimisation is possible, loops back to the beginning of `EVAL` rather than making a recursive call
 
-The evaluation environment (i.e. the set of symbols that are bound to data values, function arguments, etc) is held in `Env` object, which is basically a C# dictionary that maps symbols to values (without caring where they came from). New `Env`s are created:
-* By the original REPL
-* When functions are created (to hold the argument values)
-* When `let` special forms are evaluated (to hold the `let` variables)
-* TBD any others?????
+The evaluation environment (i.e. the set of symbols that are bound to data values, function arguments, etc) is held in `Env` objects, which are basically a C# dictionary that maps symbols to values (without itself recording where they came from). New `Env`s are created:
+* By the original REPL, before any builtin functions and other startup values are loaded
+* By `fn*`, to bind argument names and their values. These `env` objects are stored with the functions themselves, providing `JKL`'s closure mechanism
+* By `let*`, to hold the `let` variables
+* By `catch`, to store the values of `throw` statements
+* By `EVAL`, when executing functions created by `fn*`
 
-Other symbols and their values are added to an `Env` by `def!`. Finally, each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls.
+Each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls. Calls to `def!` add new symbols and their values to the current (innermost) `Env`.
 
 ## `loop` and `recur` 
 
-Conceptually, `recur` works by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing new values for the `loop` variables or the function arguments. Once the new bindings have been established, the forms in the body of the `loop` or function are re-evaluated. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, or until some resource runs out.
+Conceptually, `recur` works by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing new values for the `loop` variables or the function arguments. Once the new bindings have been established, the forms in the body of the `loop` or function are re-evaluated. Evaluation then continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, or until some resource runs out.
 
 Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses.
 
