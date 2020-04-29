@@ -76,12 +76,12 @@ First, some background. In `JKL`, the `EVAL` function is essentially a large C# 
 * Where Tail Call Optimisation is possible, loops back to the beginning of `EVAL` rather than making a recursive call
 
 The evaluation environment (i.e. the set of symbols that are bound to data values, function arguments, etc) is held in `Env` object, which is basically a C# dictionary that maps symbols to values (without caring where they came from). New `Env`s are created:
-* by the original REPL
-* when functions are created (to hold the argument values)
-* when `let` special forms are evaluated (to hold the `let` variables)
+* By the original REPL
+* When functions are created (to hold the argument values)
+* When `let` special forms are evaluated (to hold the `let` variables)
 * TBD any others?????
 
-Other symbols and their values are added to an `Env` by `def!`. Finally, each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's own environment (or a derived one) to recursive calls.
+Other symbols and their values are added to an `Env` by `def!`. Finally, each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls.
 
 ## `loop` and `recur` 
 
