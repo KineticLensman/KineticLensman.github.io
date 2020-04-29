@@ -6,9 +6,9 @@ date: 2020-04-14
 
 # Background
 
-At the beginning of 2019 [I decided to get back into coding](https://www.non-kinetic-effects.co.uk/blog/2019/01/01/MAL-1) by building an interpreter for the Lisp programming language, following the excellent [MAL guidelines](https://github.com/kanaka/mal). This successful [exercise](https://www.non-kinetic-effects.co.uk/blog/2019/04/28/MAL-5) yielded `JKL`, my own version of Lisp.
+At the beginning of 2019 [I decided to get back into coding](https://www.non-kinetic-effects.co.uk/blog/2019/01/01/MAL-1) by building an interpreter for the Lisp programming language, following the excellent [MAL guidelines](https://github.com/kanaka/mal). This successful [exercise](https://www.non-kinetic-effects.co.uk/blog/2019/04/28/MAL-5) yielded `JKL` 1.0, my own version of Lisp.
 
-A year later, I decided to use `JKL` to re-implement one of the classic Artificial Intelligence (AI) systems pioneered in the 1960s and 1970s, as described by Peter Norvig in his excellent book Paradigms of Artificial Intelligence Programming (hereafter '*Paradigms*'). My primary goal was to conduct an interesting exercise in retrocomputing. This evolving post charts my progress on this task.
+A year later, I decided to use `JKL` 1.0 to re-implement one of the classic Artificial Intelligence (AI) systems pioneered in the 1960s and 1970s, as described by Peter Norvig in his excellent book Paradigms of Artificial Intelligence Programming (hereafter '*Paradigms*'). My primary goal was to conduct an interesting exercise in retrocomputing. This evolving post charts my progress on this task.
 
 I also wanted to give `JKL` a serious work-out, given that it is a tiny programming language that lacks some of the functionality needed to build serious applications. A [separate post](https://www.non-kinetic-effects.co.uk/blog/2020/04/03/Journey-continues) describes the enhancements (and fixes) that I made as a result of using `JKL` for application development. Some of these enhancements turned into deep-dives in their own right, notably [adding a loop capability](https://www.non-kinetic-effects.co.uk/blog/2020/04/18/looping-deep-dive).
 
