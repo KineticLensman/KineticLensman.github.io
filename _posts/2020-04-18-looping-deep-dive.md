@@ -71,11 +71,11 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 ## Design planning
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the issues involved - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I wrote this section over several days - in effect developing a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
+At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I wrote this section over several days - in effect roughing out a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
 
 ## The starting point - `EVAL` in `JKL` 1.0
 
-The `EVAL` function is essentially a large C# switch statement whose cases correspond to special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc. When a special form is evaluated, it processes its arguments and / or executes the statements in its body, and then does one of the following:
+The `EVAL` function is essentially a large C# switch statement whose cases correspond to the special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When a special form is evaluated, it processes its arguments and / or executes the statements in its body, and then does one of the following:
 * Directly returns a `JKL` value
 * Returns the value calculated by a recursive call to `EVAL`
 * Where Tail Call Optimisation is possible rather than recursion, loops back to the beginning of `EVAL`, helping to avoid stack overflow in the underlying C#
