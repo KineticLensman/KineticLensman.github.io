@@ -4,9 +4,9 @@ title: "Make a Lisp [7] Deep dive: looping"
 date: 2020-04-18
 ---
 
-Please see [this post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza) for the background to this content.
-
 # The need for a loop capability in `JKL`
+
+Please see [this post](https://www.non-kinetic-effects.co.uk/blog/2020/04/14/AI-Projects-Eliza) for the background to this content.
 
 The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repeatedly read lines of input from the keyboard before passing them to the Eliza rules processor:
 ```
@@ -16,12 +16,16 @@ The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repea
    (print 'eliza>)
    (write (flatten (use-eliza-rules (read))) :pretty t)))
 ```
-Unfortunately, I can't implement this directly in `JKL` because it lacks a `loop`-like iteration mechansism (like MAL, `JKL` relies on recursion). My options were therefore to
-* Use recursion instead of iteration. This would be the simplest option, but I doscounted it because it wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
+Unfortunately, , `JKL` lacks a loop mechanism (as does MAL, on which it is based), so I can't implement this Eliza code directly. The rest of this post described how I overcame this limitation.
+
+# Choosing a looping approach
+
+## Looping options
+
+At first sight, I seemed to have the following options:
+* Use recursion instead of iteration. This would be the simplest option, but it wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
-
-# Deciding how to implement `loop` in `JKL`
 
 As evidenced by Clojure, a Lisp implementation can include both `recur` and `loop`, so there isn't an irrevocable choice between them. I therefore decided to explore both before picking one to let me proceed with the Eliza project.
 
@@ -63,21 +67,18 @@ By way of example, here is an example from the reference manual of `loop` and `r
 
 Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to aim for a `JKL` equivalent of Clojure's `loop` - `recur` approach.
 
-# Implementing `loop` / `recur`
+# Implementing `loop` / `recur` in `JKL`
 
-## The need for some design  thinking
+## Design planning
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the issues involved - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I spread this thinking out over several days. In retrospect, this thinking became a high-level design of the proposed solution, although I hadn't planned that when I started this part of the post (which up to now had been a sort of stream of consciousness).
+At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the issues involved - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I wrote this section over several days - in effect developing a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
 
 ## The starting point - `EVAL` in `JKL` 1.0
 
-The first thing I had to do was to fully understand the context for designing the new functionality, which meant re-acquainting myself with some of the basics of evaluation in `JKL` itself.
-
-The `EVAL` function is essentially a large C# switch statement whose cases correspond to the various special forms (`fn`, `do`, `def!`, `let*`, etc) in `JKL`. Each special form:
-* Processes its arguments and executes the statements in its body, if any, and then either
-* Directly returns a `JKL` value, OR
-* Returns the value calculated by a recursive call to `EVAL`, OR
-* Where Tail Call Optimisation is possible, loops back to the beginning of `EVAL` rather than making a recursive call
+The `EVAL` function is essentially a large C# switch statement whose cases correspond to special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc. When a special form is evaluated, it processes its arguments and / or executes the statements in its body, and then does one of the following:
+* Directly returns a `JKL` value
+* Returns the value calculated by a recursive call to `EVAL`
+* Where Tail Call Optimisation is possible rather than recursion, loops back to the beginning of `EVAL`, helping to avoid stack overflow in the underlying C#
 
 The evaluation environment (i.e. the set of symbols that are bound to data values, function arguments, etc) is held in `Env` objects, which are basically a C# dictionary that maps symbols to values (without itself recording where they came from). New `Env`s are created:
 * By the original REPL, before any builtin functions and other startup values are loaded
@@ -88,9 +89,9 @@ The evaluation environment (i.e. the set of symbols that are bound to data value
 
 Each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls. Calls to `def!` add new symbols and their values to the current (innermost) `Env`.
 
-## `loop` and `recur` 
+## `loop` and `recur` as `JKL` special forms
 
-Conceptually, `recur` works by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing new values for the `loop` variables or the function arguments. Once the new bindings have been established, the forms in the body of the `loop` or function are re-evaluated. Evaluation then continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, or until some resource runs out.
+Conceptually, `recur` could work by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing back new values for the `loop` variables or the function arguments. Once the new bindings had been established, the forms in the body of the `loop` or function could be re-evaluated. Evaluation would then continue until the flow of control reached the end of the `loop` (or function) without invoking `recur`, or until some resource (C# stack space or the user's patience) ran out.
 
 Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses.
 
