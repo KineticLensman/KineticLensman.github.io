@@ -89,9 +89,9 @@ The evaluation environment (i.e. the set of symbols that are bound to data value
 
 Each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. `EVAL` takes an `Env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls. Calls to `def!` add new symbols and their values to the current (innermost) `Env`.
 
-## `loop` and `recur` as `JKL` special forms
+## A conceptual model for `loop` and `recur` in `JKL`
 
-Conceptually, `recur` could work by returning control to a previous point in the evaluation - the corresponding `loop` or containing function, passing back new values for the `loop` variables or the function arguments. Once the new bindings had been established, the forms in the body of the `loop` or function could be re-evaluated. Evaluation would then continue until the flow of control reached the end of the `loop` (or function) without invoking `recur`, or until some resource (C# stack space or the user's patience) ran out.
+Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. If `recur` can exploit TCO, then an infinite loop won't in itself cause stack overflow in the underlying C#.
 
 Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses.
 
