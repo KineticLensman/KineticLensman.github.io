@@ -91,13 +91,23 @@ Each `Env` stores a pointer to the `Env` within which it was created (or `null` 
 
 ## A conceptual model for `loop` and `recur` in `JKL`
 
-Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. If `recur` can exploit TCO, then an infinite loop won't in itself cause stack overflow in the underlying C#.
+Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. Furthermore, if the `recur` implementation can use TCO, then an infinite loop (e.g. `(loop (recur))`) shouldn't in itself cause stack overflow in the underlying C#.
 
-Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses.
+Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses. So some new mechanisms are going to be needed
 
-So some new mechanisms are going to be needed
+## A solution outline
 
+After a few days of thinking, I felt that I understood the overall solution. The key here was realising that the existing `env` mechanism could provide the basis for the evaluation history required. More precisely:
 
-TBD - I'm now exploring this idea. Watch this space
+* Create a new `loop` special form, modelled closely on `let`
+* Annotate `env` objects to record their purpose, namely (as per the cases above) REPL, `fn*`, `let*`, `catch`, `EVAL` and now `loop`
+* allow `env` creators to store in their new `env` the names of the binding symbols and (unevaluated) body forms - these will be re-used by `recur`
+* Create a `recur` special form that takes arguments as per its Clojure equivalent. When evaluated, `recur` asks the current `env` to find the closest enclosing `loop` or `recur` env (if there is none `recur` throws an error). `recur` retrieves the bindings and body forms stored by the enclosing `env`, throwing an error if the number of bindings doesn't match it's own arg count. `recur` then retrieves the enclosing `env`'s parent `env`, rebinds the arguments, sets the `EVAL` AST to the stored body, and then continues execution by TCO
+
+The last step 'goes one `env` up' from the enclosing `env` (by using *its* parent) so that it doesn't cause an error by rebinding symbols that already have a value (this is a basic error in MAL).
+
+I think this is the answer. Now to try it out!
+
+Incidentally, these changes also provide the basis for a useful tool - a stack trace of the 'env's that can be accessed when a thrown error isn't caught, to provide better context information for debugging. I might even implement this first, since I suspect it will come in useful during the development I'm about to do.
 
 
