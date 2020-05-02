@@ -108,4 +108,6 @@ I made several other enhancements based on experience using `JKL`. Some of these
 
 * Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros
 
+* Modified the `JKLException` class to support `env` stack tracing, notably to store an env object and have a unified `HandleException` method.
+
 
