@@ -4,7 +4,7 @@ title: "Make a Lisp [8] Deep dive: environments and stack tracing"
 date: 2020-05-03
 ---
 
-# Stack tracing
+# Environments and stack tracing
 
 *TBD - write intro para*
 
@@ -28,13 +28,23 @@ The first `env` is created by the top-level REPL, before any builtin functions a
 
 Each `env` stores a pointer to the parent `env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. If `Find` doesn't find a symbol locally, it recursively searches the parent `env`, returning the next innermost value of the symbol, or raising an exception if it reaches the root `env` without encountering the symbol.
 
-## stack tracing using `env`
+# stack tracing using `env`
 
-'env' objects clearly hold some of the basic information required for stack tracing. However, there are some limitations, namely that `env` objects:
-* Do not record additional contextual information, such as the reason they were created or the origin of their symbols (such as the line number of the file, if anym, that introduced the symbol
-* Are not passed by `EVAL` to `JKL` built-in functions, so cannot be directly accessed when exceptions are raised by these functions
+## Changes required
 
-##
+'env' objects clearly hold some of the basic information required for stack tracing. However, there are some limitations:
+* do not record additional contextual information, such as the reason they were created (e.g. because of a `let*`) or the origin of their symbols (such as the line number of the file, if any, that introduced the symbol)
+* `env` objects are not accessible in many of the places where exceptions are raised, notably the built-in functions and the methods associated with `JKL` types (such as arithmetic operations or sequence access)
 
-TBD - describe
+The rest of this section describes how I addressed these limitations.
+
+## Annotating `env` objects
+
+To add annotations to `env` objects I started by creating a C# enumeration type to record the various reasons for which they could be created, and then ensured this was set whenever creation actually occured.
+
+## Making `env` objects accessible
+
+This fix was more challenging. There seemed to be two broad approaches. The first is to try to pass the current `env` object (e.g. as an argument) to every place where errors could be thrown. This would require a massive number of changes (literally 100s) across the entire C# code base. 
+
+The second approach is to establish a single record of the current `env`, and to update this when a new evaluation context is established.
 
