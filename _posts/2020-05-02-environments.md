@@ -18,7 +18,7 @@ This post describes the changes required to `JKL` 1.0 to enable stack tracing, s
 
 ## Environments in `JKL` 1.0
 
-The `EVAL` method takes an `env` object as an argument - these contain a C# dictionary that maps symbols to values. Symbols and their values are added to an `env` by the `def!` special form.  
+The `EVAL` method takes an `env` object as an argument - these contain a C# dictionary that maps symbols to values. Symbols and their values are added to an `env` by the `def!` special form. When a symbol is encountered during evaluation, `JKL` searches for the symbol's value using the `Find` method of the local `env`.  
 
 The first `env` is created by the top-level REPL, before any builtin functions and other startup values are loaded. During evaluation, additional `env` objects are created:
 * By `fn*`, to bind argument names and their values. These `env` objects are stored with the functions themselves, providing `JKL`'s closure mechanism
@@ -26,14 +26,12 @@ The first `env` is created by the top-level REPL, before any builtin functions a
 * By `catch`, to store the values of `throw` statements
 * By `EVAL`, when executing functions created by `fn*`
 
-Each `env` stores a pointer to the parent `env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name.
-
-When a symbol is encountered during evaluation, `JKL` can search for the symbol's value using the `Find` method of the local `env`. `Find` recursively searches the parent `env` if the symbol isn't found locally, raising an exception of no `env` contains the symbol.
+Each `env` stores a pointer to the parent `env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. If `Find` doesn't find a symbol locally, it recursively searches the parent `env`, returning the next innermost value of the symbol, or raising an exception if it reaches the root `env` without encountering the symbol.
 
 ## stack tracing using `env`
 
 'env' objects clearly hold some of the basic information required for stack tracing. However, there are some limitations, namely that `env` objects:
-* Do not record additional contextual information, such as the reason they were created or the origin of their symbols, which are added by the `env` creator or by subsequent calls to `def!`
+* Do not record additional contextual information, such as the reason they were created or the origin of their symbols (such as the line number of the file, if anym, that introduced the symbol
 * Are not passed by `EVAL` to `JKL` built-in functions, so cannot be directly accessed when exceptions are raised by these functions
 
 ##
