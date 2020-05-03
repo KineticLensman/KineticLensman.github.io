@@ -16,7 +16,10 @@ For these reasons, I have had to
 
 Where there was a choice between these two approaches, I opted for 'maintain-Clojure-consistency' as my overarching principle. 
 
-This post - which will continue to evolve during this project - describes the enhacements to `JKL` 1.0. 
+This post - which will continue to evolve during this project - describes the enhacements to `JKL` 1.0. Some of the more complex enhancements are covered in their dictinct 'deep dive' posts, namely:
+
+* A [`loop`](https://github.com/KineticLensman/KineticLensman.github.io/blob/master/_posts/2020-04-18-looping-deep-dive.md) mechanism
+
 
 # Handling semantic variations
 
@@ -36,11 +39,11 @@ Because I'm prioritizing Clojure compliance, I had to write an `atomic?` functio
 
 # New `JKL` functionality
 
-## Looping
+## Stack tracing
 
-I've moved this part to a [separate post]() because it became quite a complex story in its own right.
+Stack tracing is one of the recommended *Next Steps* in the [MAL guide](https://github.com/kanaka/mal/blob/master/process/guide.md), more precisely, *Errors with line numbers and/or stack traces*. I added it to support my implementation of `loop` (see the separate deep dive) after realising that the trace and looping mechanisms shared some common requirements and mechanisms. 
 
-
+The intent is that when an exception is thrown, `JKL` should print something like a stack trace of the preceeding function calls, to help debugging. In `JKL`, the closest thing to a stack trace of function calls is the set of nested `env` objects that hold the environmental context (symbols and their values) for evalution. My initial thinking was that when an exception is raised, the current `env` should be passed to the exception handler. The 'envs  
 
 ## The `and` macro
 
