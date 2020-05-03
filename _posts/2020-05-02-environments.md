@@ -10,7 +10,7 @@ date: 2020-05-03
 
 Stack tracing is one of the recommended *Next Steps* in the [MAL guide](https://github.com/kanaka/mal/blob/master/process/guide.md), more precisely, *Errors with line numbers and/or stack traces*. I added it to support my implementation of `loop` (see the separate [deep dive](https://www.non-kinetic-effects.co.uk/blog/2020/04/18/looping-deep-dive)) after realising that the tracing and looping mechanisms shared some common requirements and mechanisms. 
 
-The intent is that when an exception is thrown, `JKL` should print something like a stack trace of the preceeding function calls, to help debugging. In `JKL`, the closest thing to a stack trace of function calls is the set of nested `env` objects that hold the environmental context (symbols and their values) for evaluation. My initial thinking was that when an exception is raised, the current `env` should be passed to the exception handler, its relevant details should be written to the console, and the process repeated for the parent `envs`, stopping after the outermost REPL environment (whose parent `env` is `null`).
+The intent is that when an exception is thrown, `JKL` should print something like a stack trace of the preceeding function calls, to help debugging. In `JKL`, the closest thing to a function stack is the set of nested `env` objects that hold the environmental context (symbols and their values) for evaluation. My initial thinking was that when an exception is raised, the current `env` should be passed to the exception handler, its relevant details should be written to the console, and the process repeated for the parent `envs`, stopping after the outermost REPL environment (whose parent `env` is `null`).
 
 This post describes the changes required to `JKL` 1.0 to enable stack tracing, starting with a quick recap of the environment objects which are key to the implementation.
 
@@ -32,9 +32,9 @@ Each `env` stores a pointer to the parent `env` within which it was created (or 
 
 ## Changes required
 
-'env' objects clearly hold some of the basic information required for stack tracing. However, there are some limitations:
-* do not record additional contextual information, such as the reason they were created (e.g. because of a `let*`) or the origin of their symbols (such as the line number of the file, if any, that introduced the symbol)
-* `env` objects are not accessible in many of the places where exceptions are raised, notably the built-in functions and the methods associated with `JKL` types (such as arithmetic operations or sequence access)
+`env` objects clearly hold some of the basic information required for stack tracing. However, there are some limitations:
+* `env` objects do not record the necessary contextual information, such as the reason they were created (e.g. because of a `let*`) or the origin of their symbols (such as the line number of the file, if any, that introduced the symbol)
+* `env objects` are passed to successive `EVAL` calls and are thus directly accessible within `EVAL` itself. However, the `env` is not passed to built-in functions or the methods associated with `JKL` types (such as arithmetic operations or sequence access), and thus cannot in turn be passed to exception handlers when errors are detected in these places
 
 The rest of this section describes how I addressed these limitations.
 
