@@ -48,3 +48,18 @@ This fix was more challenging. There seemed to be two broad approaches. The firs
 
 The second approach is to establish a single record of the current `env`, and to update this when a new evaluation context is established.
 
+## First try
+
+Here's the result of using the new stack trace mechanism. It's a function that takes a single argument, then binds the arg to a local let variable, and then tries to numerically add the argument to a string.
+
+```
+*** Welcome to JK's Lisp ***
+JKL> (def! f (fn* (fnArg) (let* (n fnArg) (+ n "wtf"))))
+<fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
+JKL> (f 1)
+Eval error: Plus - expected a number but got: '"wtf"'
+In Let
+In FnCall
+In Repl
+```
+Yes! This seems to work. 
