@@ -75,19 +75,15 @@ At this point, instead of starting to hack together a quick-and-dirty solution, 
 
 ## The starting point - `EVAL` in `JKL` 1.0
 
-The `EVAL` function takes two arguments: a `JKL` expression represented as an Abstract Syntax Tree (AST) and an environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. `EVAL` is essentially a large C# switch statement whose cases correspond to the special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When the AST is a special form, `EVAL` evalates the statements in the AST body and finshes by either:
+The `EVAL` function takes two arguments:
+* A `JKL` expression represented as an Abstract Syntax Tree (AST)
+* An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here] ()
+
+`EVAL` is essentially a large C# switch statement whose cases correspond to the special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When the AST is a special form, `EVAL` evalates the statements in the AST body and finshes by either:
 * Directly returning a `JKL` value
 * Returning the value calculated by a recursive call to `EVAL`
 * Where Tail Call Optimisation is possible rather than recursion, looping back to the beginning of `EVAL`, helping to avoid stack overflow in the underlying C#
 
-The `env` objects contain a C# dictionary that maps symbols to values. A new `env` is created:
-* By the original REPL, before any builtin functions and other startup values are loaded
-* By `fn*`, to bind argument names and their values. These `env` objects are stored with the functions themselves, providing `JKL`'s closure mechanism
-* By `let*`, to hold the `let` variables
-* By `catch`, to store the values of `throw` statements
-* By `EVAL`, when executing functions created by `fn*`
-
-Each `Env` stores a pointer to the `Env` within which it was created (or `null` for the outermost REPL), thus providing a lexical scoping mechanism for symbols that have the same name. As stated, `EVAL` takes an `env` as an argument, and can thus pass it's parent environment (or one it has itself derived, e.g. by `let*`) to recursive calls. However, `env` objects do not record additional contextual information, such as the reason they were created or the origin of their symbols (which are added by the `env` creator or by subsequent calls to `def!`.
 
 ## A conceptual model for `loop` and `recur` in `JKL`
 
@@ -97,17 +93,14 @@ Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of
 
 ## A solution outline
 
-After a few days of thinking, I'd hashed out a possible approach. The key idea was  that the existing `env` mechanism could provide the basis for the evaluation history required. More precisely, I'd need to:
+After a few days of thinking, I'd hashed out a possible approach. The key idea was that the `JKL` `env` mechanism (as extended in a [separate deep dive](https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)) could provide the basis for the evaluation history required. More precisely, I'd need to:
 
 * Create a new `loop` special form, modelled closely on `let`
-* Annotate `env` objects to record their purpose, namely (as per the cases above) REPL, `fn*`, `let*`, `catch`, `EVAL` and now `loop`
-* Allow `env` creators to store in their new `env` the names of the binding symbols and (unevaluated) body forms - these will be re-used by `recur`
+* Allow `env` creators to store in their new `env` the names of the binding symbols and (unevaluated) body forms - to be re-used by `recur`
 * Create a `recur` special form that takes arguments as per its Clojure equivalent. When evaluated, `recur` asks the current `env` to find the closest enclosing `loop` or `recur` env (if there is none `recur` throws an error). `recur` retrieves the bindings and body forms stored by the enclosing `env`, throwing an error if the number of bindings doesn't match it's own arg count. `recur` then retrieves the enclosing `env`'s parent `env`, rebinds the arguments, sets the `EVAL` AST to the stored body, and then continues execution by TCO
 
 The last step 'goes one `env` up' from the enclosing `env` (by using *its* parent) so that it doesn't cause an error by rebinding symbols that already have a value (this is a basic error in MAL).
 
 I think this is the answer. Now to try it out!
-
-Incidentally, these changes also provide the basis for a useful tool - a stack trace of the 'env's that can be accessed when a thrown error isn't caught, to provide better context information for debugging. I might even implement this first, since I suspect it will come in useful during the development I'm about to do.
 
 
