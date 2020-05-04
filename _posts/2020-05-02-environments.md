@@ -8,7 +8,7 @@ date: 2020-05-03
 
 *TBD - write intro para*
 
-Stack tracing is one of the recommended *Next Steps* in the [MAL guide](https://github.com/kanaka/mal/blob/master/process/guide.md): *Errors with line numbers and/or stack traces*. I decided that I needed stack tracing to support my implementation of `loop` (see the separate [deep dive](https://www.non-kinetic-effects.co.uk/blog/2020/04/18/looping-deep-dive)) after realising that the tracing and looping mechanisms haved some common requirements and mechanisms. 
+Stack tracing - *errors with line numbers and/or stack traces* - is one of the recommended *Next Steps* in the [MAL guide](https://github.com/kanaka/mal/blob/master/process/guide.md). I decided I needed stack tracing to support my implementation of `loop` (see the separate [deep dive](https://www.non-kinetic-effects.co.uk/blog/2020/04/18/looping-deep-dive)) after realising that the tracing and looping mechanisms have some common requirements and mechanisms. 
 
 The intent is that when an exception is thrown, `JKL` should print something like a stack trace of the preceeding function calls, to help debugging. In `JKL`, the closest thing to a function stack is the set of nested `env` objects that hold the environmental context (symbols and their values) for evaluation. My initial thinking was that when an exception is raised, the current `env` should be passed to the exception handler so that the context for the exception can be written to the error log (currently the console).
 
