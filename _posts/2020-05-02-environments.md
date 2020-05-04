@@ -40,7 +40,7 @@ The rest of this section describes how I addressed these limitations.
 
 ## Annotating `env` objects
 
-To add annotations to `env` objects I derived subclasses of `env` class to represent the different reasons for which an environment is created (REPL, `fn*`, `let*`, etc) and gave each subclass a different label for printing (initially I used an enum for the same purpose before realising that subclasses would be more convenient).
+To add annotations to `env` objects I derived subclasses of `env` class to represent the different reasons for which an environment is created (REPL, `fn*`, `let*`, etc) and gave each subclass a different label for printing (initially I used an enum for the same purpose before realising that subclasses would be more convenient). I then allowed the subclass for functions (`EnvFnCall`) to store the function associated with the `env` so that this could be printed out in the stack trace.
 
 ## Making `env` objects accessible
 
@@ -50,7 +50,7 @@ The second approach is to establish a single record of the current `env`, and to
 
 ## First try
 
-Here's the result of using the new stack trace mechanism. The error occurs in a function that takes a single argument, binds the arg to a local `let*` variable, and then tries to numerically add the let variable value to a string.
+Here's the result of using the new stack trace mechanism. The error occurs in a function `f` that takes a single argument, binds the arg to a local `let*` variable, and then tries to numerically add the let variable value to a string:
 
 ```
 *** Welcome to JK's Lisp ***
@@ -58,8 +58,21 @@ JKL> (def! f (fn* (fnArg) (let* (n fnArg) (+ n "wtf"))))
 <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
 JKL> (f 1)
 Eval error: Plus - expected a number but got: '"wtf"'
-In Let
-In FnCall
-In Repl
+In let*
+In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
+In REPL
 ```
-Yes! This seems to work. 
+
+This is looking good! But what happens if the error occurs in a nested function call?
+
+```
+JKL> (def! g (fn* (n) (f n)))
+<fn (n) (f n)>
+JKL> (g 1)
+Eval error: Plus - expected a number but got: '"wtf"'
+In let*
+In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
+In REPL
+```
+
+We are still getting the actual location, but the fact that `f` is now called from within `g` isn't shown. Apparently `g` doesn't have its own environment. 
