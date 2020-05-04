@@ -28,7 +28,7 @@ The first `env` is created by the top-level REPL, before any builtin functions a
 
 Each `env` stores a pointer to the parent `env` within which it was created (or `null` for the outermost REPL), thus providing a nested scoping mechanism for symbols that have the same name. If `Find` spots the symbol in the local `env`, it returns it. Otherwise it recursively examines the parent `env`.
 
-# stack tracing using `env`
+# Stack tracing using `env`
 
 ## Changes required
 
@@ -75,4 +75,16 @@ In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
 In REPL
 ```
 
-We are still getting the actual location, but the fact that `f` is now called from within `g` isn't shown. Apparently `g` doesn't have its own environment. 
+We are still getting the actual location, but the fact that `f` is now called from within `g` isn't shown. My initial guess is that this is because `g`'s environment is discarded by TCO within `EVAL`. This is good, in the sense that TCO is intended to avoid stack overflow, but not as useful for debugging.
+
+To check that TCO is working as intended, I defined two mutually recursive non-terminating functions and ran them...
+```
+*** Welcome to JK's Lisp ***
+JKL> (def! f (fn* () (g)))
+<fn () (g)>
+JKL> (def! g (fn* () (f)))
+<fn () (f)>
+JKL> (f)
+
+```
+This looped until my patience ran out, consuming constant memory but not causing a stack overflow.
