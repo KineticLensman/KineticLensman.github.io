@@ -76,13 +76,19 @@ In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
 In REPL
 ```
 
-`JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined) function itself defined in a `let` in a separate REPL-level function `g`:
+`JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined function) itself declared in a `let` in a separate REPL-level function `g`:
 ```
-*** Welcome to JK's Lisp ***
-JKL> (def! f (fn* (fArg) (let* (n fArg) (+ n "wtf"))))
-<fn (fArg) (let* (n fArg) (+ n "wtf"))>
-JKL> (def! g (fn* (gArg) (let* (closureFn (fn* (clArg) (f clArg))) (prn "In closure") (closureFn gArg))))
-<fn (gArg) (let* (closureFn (fn* (clArg) (f clArg))) (prn "In closure") (closureFn gArg))>
+(def! f (fn* (fArg)
+	(let* (n fArg)
+		(+ n "wtf"))))
+(def! g (fn* (gArg)
+	(let* (closureFn (fn* (clArg)
+						(prn "In closure") (f clArg)))
+		(closureFn gArg))))
+```
+When `g` is invoked, we get...
+```
+...
 JKL> (g 42)
 "In closure"
 Eval error: Plus - expected a number but got: '"wtf"'
