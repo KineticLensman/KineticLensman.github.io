@@ -76,12 +76,7 @@ In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
 In REPL
 ```
 
-`JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. This is because the `env` objects (as currently implemented) aren't in fact a call stack. More precisely, when `EVAL` has to evaluate a non-core function (one created by `fn*` as opposed to say an arithmetic operation) it:
-* Creates a new evalution `env` that consists of the one that was in force when the function was defined (which is the REPL for both `f` AND `g`) and which is stored with the function
-* Adds to this `env` new symbols corresponding to the function's arguments and their values
-* Executes the body of the function in the new `env`
-
-Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined) function itself defined in a `let` in a separate REPL-level function `g`:
+`JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined) function itself defined in a `let` in a separate REPL-level function `g`:
 ```
 *** Welcome to JK's Lisp ***
 JKL> (def! f (fn* (fArg) (let* (n fArg) (+ n "wtf"))))
@@ -95,6 +90,10 @@ In let*
 In <fn (fArg) (let* (n fArg) (+ n "wtf"))>
 In REPL
 ```
+We aren't seeing a full call stack because the `env` objects (as currently implemented) were not in fact designed to record a sequence of function calls. Instead, their purpose is to record the context (hence 'environment') in which a function was defined, and to recover this context when the body of the function is evaluated. Specifically, when `EVAL` has to evaluate a non-core function (one created by `fn*` as opposed to say an arithmetic operation) it:
+* Creates a new evalution `env` that consists of the one that was in force when the function was defined (which is the REPL for both `f` AND `g`) and which is stored with the function
+* Adds to this `env` new symbols created by binding the function's arguments to the values being passed to the function
+* Executes the body of the function in the new `env` (via TCO)
 
 So, at this point:
 * I don't have a full stack trace mechanism
