@@ -71,7 +71,9 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 ## Design planning
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. I wrote this section over several days - in effect roughing out a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
+At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. (Incidentally, I made an unconscious decision to implemennt `loop` in the underlying C# rather than to create a `loop` macro in `JKL` itself. I only realised a macro would have been an alternative when I came across [this](https://8thlight.com/blog/patrick-gombert/2015/03/23/tail-recursion-in-clojure.html)).
+
+I wrote this section over several days - in effect roughing out a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
 
 ## The starting point - `EVAL` in `JKL` 1.0
 
