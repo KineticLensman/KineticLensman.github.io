@@ -79,11 +79,11 @@ In REPL
 `JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined function) itself declared in a `let` in a separate REPL-level function `g`:
 ```
 (def! f (fn* (fArg)
-	(let* (n fArg)
+           (let* (n fArg)
 		(+ n "wtf"))))
 (def! g (fn* (gArg)
-	(let* (closureFn (fn* (clArg)
-						(prn "In closure") (f clArg)))
+	   (let* (closureFn (fn* (clArg)
+                     (prn "In closure") (f clArg)))
 		(closureFn gArg))))
 ```
 When `g` is invoked, we get...
