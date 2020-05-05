@@ -81,6 +81,21 @@ In REPL
 * Adds to this `env` new symbols corresponding to the function's arguments and their values
 * Executes the body of the function in the new `env`
 
+Here's another more complex example, involving `f` as before, but now called from within a closure (a dynamically defined) function itself defined in a `let` in a separate REPL-level function `g`:
+```
+*** Welcome to JK's Lisp ***
+JKL> (def! f (fn* (fArg) (let* (n fArg) (+ n "wtf"))))
+<fn (fArg) (let* (n fArg) (+ n "wtf"))>
+JKL> (def! g (fn* (gArg) (let* (closureFn (fn* (clArg) (f clArg))) (prn "In closure") (closureFn gArg))))
+<fn (gArg) (let* (closureFn (fn* (clArg) (f clArg))) (prn "In closure") (closureFn gArg))>
+JKL> (g 42)
+"In closure"
+Eval error: Plus - expected a number but got: '"wtf"'
+In let*
+In <fn (fArg) (let* (n fArg) (+ n "wtf"))>
+In REPL
+```
+
 So, at this point:
 * I don't have a full stack trace mechanism
 * I might not have a mechanism that can support the rebinding required by `loop` and `recur`
