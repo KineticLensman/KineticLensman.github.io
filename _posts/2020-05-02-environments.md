@@ -66,6 +66,7 @@ In REPL
 This is looking good! But what happens if the error occurs in a nested function call?
 
 ```
+...
 JKL> (def! g (fn* (n) (f n)))
 <fn (n) (f n)>
 JKL> (g 1)
@@ -75,16 +76,13 @@ In <fn (fnArg) (let* (n fnArg) (+ n "wtf"))>
 In REPL
 ```
 
-We are still getting the actual location, but the fact that `f` is now called from within `g` isn't shown. My initial guess is that this is because `g`'s environment is discarded by TCO within `EVAL`. This is good, in the sense that TCO is intended to avoid stack overflow, but not as useful for debugging.
+`JKL` is correctly printing the immediate context for the error (the `let*` in `f`) but the fact that `f` was called by `g` isn't shown. This is because the `env` objects (as currently implemented) aren't in fact a call stack. More precisely, when `EVAL` has to evaluate a non-core function (one created by `fn*` as opposed to say an arithmetic operation) it:
+* Creates a new evalution `env` that consists of the one that was in force when the function was defined (which is the REPL for both `f` AND `g`) and which is stored with the function
+* Adds to this `env` new symbols corresponding to the function's arguments and their values
+* Executes the body of the function in the new `env`
 
-To check that TCO is working as intended, I defined two mutually recursive non-terminating functions and ran them...
-```
-*** Welcome to JK's Lisp ***
-JKL> (def! f (fn* () (g)))
-<fn () (g)>
-JKL> (def! g (fn* () (f)))
-<fn () (f)>
-JKL> (f)
+So, at this point:
+* I don't have a full stack trace mechanism
+* I might not have a mechanism that can support the rebinding required by `loop` and `recur`
 
-```
-This looped until my patience ran out, consuming constant memory but not causing a stack overflow.
+TO BE CONTINUED
