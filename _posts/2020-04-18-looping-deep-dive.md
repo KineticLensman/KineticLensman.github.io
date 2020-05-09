@@ -111,9 +111,9 @@ As per my usual approach, I concentrated on writing comprehensive error checking
 ```
 (def! fib
    (fn* (n)
-      (loop [count n accumlator 1]
+      (loop [count n accumulator 1]
          (if (= 0 count)
-             accumlator
+             accumulator
              (recur (- count 1) (* accumlator count))))))
 ```
 And here is some test output:
@@ -139,9 +139,15 @@ JKL> (fib 40)
 JKL> (fib 50)
 3.04140932017134E+64
 ```
-Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler, and is 'instantaeous' to the naked eye.
+Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler) and is 'instantaeous' to the naked eye.
 
 Now I need to test the case where `recur` returns to an enclosing function. 
+
+However, if `fib` is called with a negative number (e.g. `(fib -1)`) a stack overflow in the underlying C# sharp does occur. It would be simple to fix `fib` by checking `n` before entering the loop. However, the more fundamental question is what `JKL` should do when a stack overflow exception is raised. Currently, these exceptions aren't caught, and `JKL` crashes back into the underlying C# when they occur. This clearly isn't acceptable for a production system. I'll add this to my TODO list.
+
+## Tail check
+
+In Clojure, `recur` can only be used in the so-called tail position - i.e. the last form executed by the enclosing `fn*` or `loop`. I haven't implemented such a restriction. 
 
 
 
