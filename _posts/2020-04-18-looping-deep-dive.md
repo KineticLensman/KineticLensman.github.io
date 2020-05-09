@@ -97,12 +97,49 @@ Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of
 
 After a few days of thinking, I'd hashed out a possible approach. The key idea was that the `JKL` `env` mechanism (as extended in a [separate deep dive](https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)) could provide the basis for the evaluation history required. More precisely, I'd need to:
 
-* Create a new `loop` special form, modelled closely on `let`
+* Create a new `loop` special form, modelled on `let`
 * Allow `env` creators to store in their new `env` the names of the binding symbols and (unevaluated) body forms - to be re-used by `recur`
-* Create a `recur` special form that takes arguments as per its Clojure equivalent. When evaluated, `recur` asks the current `env` to find the closest enclosing `loop` or `recur` env (if there is none `recur` throws an error). `recur` retrieves the bindings and body forms stored by the enclosing `env`, throwing an error if the number of bindings doesn't match it's own arg count. `recur` then retrieves the enclosing `env`'s parent `env`, rebinds the arguments, sets the `EVAL` AST to the stored body, and then continues execution by TCO
-
-The last step 'goes one `env` up' from the enclosing `env` (by using *its* parent) so that it doesn't cause an error by rebinding symbols that already have a value (this is a basic error in MAL).
+* Create a `recur` special form that takes arguments as per its Clojure equivalent. When evaluated, `recur` asks the current `env` to find the closest enclosing `loop` or `recur` env (if there is none `recur` throws an error). `recur` retrieves the bindings and body forms stored by the enclosing `env`, throwing an error if the number of bindings doesn't match it's own arg count. `recur` then rebinds the arguments, sets the `EVAL` AST to the stored body, and then continues execution by TCO
 
 I think this is the answer. Now to try it out!
+
+## Implementation
+
+I implemented `loop` and `recur` incrementally, following the steps I've just listed. The implementation went hand in hand with supporting changes to the `env` mechanism - namely a rebind mechanism (called from `recur`) and storage of bindings and body forms for re-evaluation. I also refactored `EVAL` rather than duplicate the complex code in `let*` when writing `loop`, creating a helper function in the process. 
+
+As per my usual approach, I concentrated on writing comprehensive error checking throughout rather than proceeding straight to a quick-and-dirty solution. Although this slowed down progress somewhat, the first full test code worked almost first time. Here is a fibonacci function based on `loop` and `recur`
+```
+(def! fib
+   (fn* (n)
+      (loop [count n accumlator 1]
+         (if (= 0 count)
+             accumlator
+             (recur (- count 1) (* accumlator count))))))
+```
+And here is some test output:
+```
+JKL> (fib 1)
+1
+JKL> (fib 2)
+2
+JKL> (fib 3)
+6
+JKL> (fib 4)
+24
+JKL> (fib 10)
+3628800
+JKL> (fib 20)
+2.43290200817664E+18
+JKL> (fib 30)
+2.65252859812191E+32
+JKL> (fib 30)
+2.65252859812191E+32
+JKL> (fib 40)
+8.15915283247898E+47
+JKL> (fib 50)
+3.04140932017134E+64
+```
+Pleasingly, this runs in constant memory, and is 'instaneous' to the naked eye.
+
 
 
