@@ -101,8 +101,9 @@ We aren't seeing a full call stack because the `env` objects (as currently imple
 * Adds to this `env` new symbols created by binding the function's arguments to the values being passed to the function
 * Executes the body of the function in the new `env` (via TCO)
 
-So, at this point:
-* I don't have a full stack trace mechanism
-* I might not have a mechanism that can support the rebinding required by `loop` and `recur`
+So, at this point, I don't have a full stack trace mechanism. However, the current functionality should be sufficient to support the required by `loop` and `recur` (the successful implementation of which proved this point. 
 
-TO BE CONTINUED
+Additional changes required to support `loop` and `recur` were as follows:
+* Storage of binding symbol names so that these could be rebound
+* Storage of body forms so that these can be re-evaluated once a `recur` has set bindings up
+* A `rebind` function that allows an existing symbol in an `env` to be rebound
