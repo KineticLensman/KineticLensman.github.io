@@ -103,7 +103,7 @@ After a few days of thinking, I'd hashed out a possible approach. The key idea w
 
 I think this is the answer. Now to try it out!
 
-## Implementation
+## Implementation stage 1: `recur` within `loop`
 
 I implemented `loop` and `recur` incrementally, following the steps I've just listed. The implementation went hand in hand with supporting changes to the `env` mechanism - namely a rebind mechanism (called from `recur`) and storage of bindings and body forms for re-evaluation. I also refactored `EVAL` rather than duplicate the complex code in `let*` when writing `loop`, creating a helper function in the process. 
 
@@ -145,18 +145,26 @@ Unfortunately, however, the `(loop () (recur))` infinite loop mentioned above tr
 
 Fixing the `(loop () (recur))` stack overflow turned out to be very easy. I'd incorrectly passed the stashed body forms to the TCO loop (altogether as a single list, rather than individually like let). With this fixed, the loop hung (implying  it was executing rather than crashing) using constant memory (implying that TCO is operating correctly).
 
-I then decided to test what happened when I tried looping back to a `fn*` rather than a `loop`, using a function that is supposed to count from a start number up to 10.
+## Implementation stage 2: `recur` within `fn*`
+
+Once I'd achieved this initial implementation of `recur` within a `loop` special form, my next step was to make `recur` work inside a `fn`. I started by writing a test function that is supposed to count from a start number up to 10:
 ```
-*** Welcome to JK's Lisp ***
-JKL> (def! f (fn* (start) (if (< start 10) (recur (+ start 1)))))
-<fn (start) (if (< start 10) (recur (+ start 1)))>
+(def! f (fn* (start)
+            (if (< start 10)
+                (recur (+ start 1)))))
+```
+When executed as a test, I got the following: 
+```
 JKL> (f 1)
 Eval error: <fn (start) (if (< start 10) (recur (+ start 1)))> has 0 binding(s) but recur has 1
 In <fn (start) (if (< start 10) (recur (+ start 1)))>
 In REPL
 ```
-
-Oops. I forgot to stash the bindings in the implememtation of the `fn*` special form. 
+This error occured because at this stage I haven't made `fn*` do the stashing required by `recur`. I'd initally assumed the stashing would be relatively simple (essentially copying the code from `let*`). However, as soon as I looked at the implementation of `fn*`, I came across a gotcha - the environment for the function is created inside a C# closure that is executed when the function is applied, not when the `fn*` special form that creates the function is evaluated. Here's the C# code itself, which I admit I largely lifted from the C# reference implementation:
+```C#
+JKLFunc new_Func = new JKLFunc(FnBodyForms, env, FnParamsSeq, args => EVAL(FnBodyForms, new EnvFn(cur_env, FnParamsSeq, args)))
+```
+Clearly, if I'm going to get `recur` working inside a function, I'm going to have to unpack this a bit. Or accept the lmitation that `recur` can only work inside a `loop`, which wouldn't in fact be a complete showstopper. I decided to spend a bit of time looking at the closure mechanism before constraining `recur`.
 
 ## Tail check
 
