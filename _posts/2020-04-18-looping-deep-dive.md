@@ -45,17 +45,17 @@ I decided to start by finding out how is `loop` implemented in Common Lisp, whic
                            env
                            *loop-ansi-universe*))
 ```
-The line
+There is a lot going on here, but the key line is
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't at first glance the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of Common Lisp's loop syntax, which is actually an idiosyncratic domain-specific langauge, and not particularly lisp-like.
+which shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't at first glance the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of Common Lisp's loop syntax, which is actually an idiosyncratic domain-specific langauge, and not particularly lisp-like.
 
 ## Looping in Clojure
 
 Clojure's looping mechanism is very different to Common Lisp's. Specifically, Clojure has two special forms: `loop` and `recur`, as described in the [Clojure reference manual](https://clojure.org/reference/special_forms). `loop` is like `let`, in that it has a set of bindings followed by a body of forms. It is usually used in conjunction with `recur`, which rebinds the `loop` variables before control jumps back to the beginning of `loop`. If `recur` is used outside a loop, control jumps back to the start of the function in which it occurs. `recur` must be used in the so-called tail position of a function or a loop (its use in other places is an error). 
 
-By way of example, here is an example from the reference manual of `loop` and `recur`:
+By way of example, here is an example from the Clojure reference manual of `loop` and `recur`:
 ```
 (def factorial
   (fn [n]
@@ -71,7 +71,7 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 ## Design planning
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. (Incidentally, I made an unconscious decision to implemennt `loop` in the underlying C# rather than to create a `loop` macro in `JKL` itself. I only realised a macro would have been an alternative when I came across [this](https://8thlight.com/blog/patrick-gombert/2015/03/23/tail-recursion-in-clojure.html)).
+At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. (Incidentally, I made an unconscious decision to implemennt `loop` in the underlying C# rather than to create a `loop` macro in `JKL` itself. I only realised a macro would have been an alternative when I came across [this blog](https://8thlight.com/blog/patrick-gombert/2015/03/23/tail-recursion-in-clojure.html)).
 
 I wrote this section over several days - in effect roughing out a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
 
@@ -79,9 +79,9 @@ I wrote this section over several days - in effect roughing out a high-level des
 
 The `EVAL` function takes two arguments:
 * A `JKL` expression represented as an Abstract Syntax Tree (AST)
-* An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here] ()
+* An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here] (https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)
 
-`EVAL` is essentially a large C# switch statement whose cases correspond to the special forms in `JKL`, i.e. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When the AST is a special form, `EVAL` evalates the statements in the AST body and finshes by either:
+`EVAL` is essentially a large C# switch statement whose cases correspond to `JKL` special forms , e.g. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When the AST is a special form, `EVAL` evalates the statements in the AST body and finshes by either:
 * Directly returning a `JKL` value
 * Returning the value calculated by a recursive call to `EVAL`
 * Where Tail Call Optimisation is possible rather than recursion, looping back to the beginning of `EVAL`, helping to avoid stack overflow in the underlying C#
@@ -89,9 +89,9 @@ The `EVAL` function takes two arguments:
 
 ## A conceptual model for `loop` and `recur` in `JKL`
 
-Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. Furthermore, if the `recur` implementation can use TCO, then an infinite loop (e.g. `(loop (recur))`) shouldn't in itself cause stack overflow in the underlying C#.
+Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. Furthermore, if the `recur` implementation can use TCO, then an infinite loop (e.g. `(loop () (recur))`) shouldn't in itself cause stack overflow in the underlying C#.
 
-Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses. So some new mechanisms are going to be needed
+Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses. So some new mechanisms are going to be needed.
 
 ## A solution outline
 
@@ -141,7 +141,7 @@ JKL> (fib 50)
 ```
 Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler) and is 'instantaeous' to the naked eye.
 
-Unfortunately, however, the code `(loop () (recur))` triggered a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itself, but the underlying problem remains. I'll come back to this later (I added a TODO to think about stack overflows).
+Unfortunately, however, the `(loop () (recur))` infinite loop mentioned above triggered a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itself, but the underlying problem remains. I'll come back to this later (I added a TODO to think about stack overflows).
 
 Fixing the `(loop () (recur))` stack overflow turned out to be very easy. I'd incorrectly passed the stashed body forms to the TCO loop (altogether as a single list, rather than individually like let). With this fixed, the loop hung (implying  it was executing rather than crashing) using constant memory (implying that TCO is operating correctly).
 
