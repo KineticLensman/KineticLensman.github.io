@@ -107,7 +107,7 @@ I think this is the answer. Now to try it out!
 
 I implemented `loop` and `recur` incrementally, following the steps I've just listed. The implementation went hand in hand with supporting changes to the `env` mechanism - namely a rebind mechanism (called from `recur`) and storage of bindings and body forms for re-evaluation. I also refactored `EVAL` rather than duplicate the complex code in `let*` when writing `loop`, creating a helper function in the process. 
 
-As per my usual approach, I concentrated on writing comprehensive error checking throughout rather than proceeding straight to a quick-and-dirty solution. For example, `JKL` tests that the number of values defined by `loop` is the same as the number of expressions defined by `recur`. Although this error testing slowed down progress somewhat, the first proper test code worked first time. Here it is - a fibonacci function based on `loop` and `recur`:
+As per my usual approach, I concentrated on writing comprehensive error checking throughout rather than proceeding straight to a quick-and-dirty solution. For example, `JKL` tests that the number of values defined by `loop` is the same as the number of expressions defined by `recur`. Although this error testing slowed down progress somewhat, the first proper functional code worked first time. Here it is - a fibonacci function based on `loop` and `recur`:
 ```
 (def! fib
    (fn* (n)
@@ -141,9 +141,15 @@ JKL> (fib 50)
 ```
 Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler) and is 'instantaeous' to the naked eye.
 
-Now I need to test the case where `recur` returns to an enclosing function. 
+Unfortunately, however, the code `(loop () (recur))` triggers a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itseld, but the underling problem remains. 
 
-However, if `fib` is called with a negative number (e.g. `(fib -1)`) a stack overflow in the underlying C# sharp does occur. It would be simple to fix `fib` by checking `n` before entering the loop. However, the more fundamental question is what `JKL` should do when a stack overflow exception is raised. Currently, these exceptions aren't caught, and `JKL` crashes back into the underlying C# when they occur. This clearly isn't acceptable for a production system. I'll add this to my TODO list.
+So, at this point, I have to understand
+* Why an empty `loop` - `recur` combo causes a stack overflow
+* (In slower time) how to better manage stack overflows in general, since at the moment `JKL` crashes back into the underlying C# when they occur. This clearly isn't acceptable for a production system. I'll add this to my TODO list.
+
+I also need to test the case where `recur` returns to an enclosing function. 
+
+TBD - watch this space.
 
 ## Tail check
 
