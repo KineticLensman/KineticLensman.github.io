@@ -141,15 +141,22 @@ JKL> (fib 50)
 ```
 Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler) and is 'instantaeous' to the naked eye.
 
-Unfortunately, however, the code `(loop () (recur))` triggers a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itseld, but the underling problem remains. 
+Unfortunately, however, the code `(loop () (recur))` triggered a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itself, but the underlying problem remains. I'll come back to this later (I added a TODO to think about stack overflows).
 
-So, at this point, I have to understand
-* Why an empty `loop` - `recur` combo causes a stack overflow
-* (In slower time) how to better manage stack overflows in general, since at the moment `JKL` crashes back into the underlying C# when they occur. This clearly isn't acceptable for a production system. I'll add this to my TODO list.
+Fixing the `(loop () (recur))` stack overflow turned out to be very easy. I'd incorrectly passed the stashed body forms to the TCO loop (altogether as a single list, rather than individually like let). With this fixed, the loop hung (implying  it was executing rather than crashing) using constant memory (implying that TCO is operating correctly).
 
-I also need to test the case where `recur` returns to an enclosing function. 
+I then decided to test what happened when I tried looping back to a `fn*` rather than a `loop`, using a function that is supposed to count from a start number up to 10.
+```
+*** Welcome to JK's Lisp ***
+JKL> (def! f (fn* (start) (if (< start 10) (recur (+ start 1)))))
+<fn (start) (if (< start 10) (recur (+ start 1)))>
+JKL> (f 1)
+Eval error: <fn (start) (if (< start 10) (recur (+ start 1)))> has 0 binding(s) but recur has 1
+In <fn (start) (if (< start 10) (recur (+ start 1)))>
+In REPL
+```
 
-TBD - watch this space.
+Oops. I forgot to stash the bindings in the implememtation of the `fn*` special form. 
 
 ## Tail check
 
