@@ -130,45 +130,32 @@ JKL> (fib 10)
 3628800
 JKL> (fib 20)
 2.43290200817664E+18
-JKL> (fib 30)
-2.65252859812191E+32
-JKL> (fib 30)
-2.65252859812191E+32
-JKL> (fib 40)
-8.15915283247898E+47
-JKL> (fib 50)
-3.04140932017134E+64
 ```
 Pleasingly, this runs in constant memory (according to Visual Studio graphical profiler) and is 'instantaeous' to the naked eye.
 
-Unfortunately, however, the `(loop () (recur))` infinite loop mentioned above triggered a stack overflow exception in the underlying C#, which means that the `recur` mechanism isn't correctly using TCO as I'd hoped it might. On a related note, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itself, but the underlying problem remains. I'll come back to this later (I added a TODO to think about stack overflows).
+Unfortunately, however, the `(loop () (recur))` infinite loop mentioned above triggered a stack overflow exception in the underlying C#, which meant that the `recur` mechanism wasn't correctly using TCO as I'd hoped it might. (Incidentally, if `fib` is called with a negative number (e.g. `(fib -1)`) then a similar stack overflow occurs. This specific error can be headed off by a simple check in `fib` itself, but the underlying problem remains. I added a TODO to think about stack overflows).
 
 Fixing the `(loop () (recur))` stack overflow turned out to be very easy. I'd incorrectly passed the stashed body forms to the TCO loop (altogether as a single list, rather than individually like let). With this fixed, the loop hung (implying  it was executing rather than crashing) using constant memory (implying that TCO is operating correctly).
 
 ## Implementation stage 2: `recur` within `fn*`
 
-Once I'd achieved this initial implementation of `recur` within a `loop` special form, my next step was to make `recur` work inside a `fn`. I started by writing a test function that is supposed to count from a start number up to 10:
+Now that `recur` works inside a `loop` special form, I had to make `recur` work inside a `fn*`, which (like `loop`) means stashing the function's parameters and body forms in an appropriate `env` for use by `recur`. I'd initially assumed this would look very similar to the `loop` implementation but had forgotten that function environments are more complicated - specifically there is the environment that exists when the function is created, and the environment that exists when the function is called. After some head scratching and experimentation, I realised that the parameters and body should not be stashed in the *create* environment but in the *call* environment. Once I'd figured this out, the following (clumsy-looking) non-`loop` fibonacci function worked as expected:
 ```
-(def! f (fn* (start)
-            (if (< start 10)
-                (recur (+ start 1)))))
+(def! fibrecur
+  (fn* (target acc)
+       (if (= 0 target)
+            acc
+          (recur (- target 1) (* acc target)))))
 ```
-When executed as a test, I got the following: 
-```
-JKL> (f 1)
-Eval error: <fn (start) (if (< start 10) (recur (+ start 1)))> has 0 binding(s) but recur has 1
-In <fn (start) (if (< start 10) (recur (+ start 1)))>
-In REPL
-```
-This error occured because at this stage I haven't made `fn*` do the stashing required by `recur`. I'd initally assumed the stashing would be relatively simple (essentially copying the code from `let*`). However, as soon as I looked at the implementation of `fn*`, I came across a gotcha - the environment for the function is created inside a C# closure that is executed when the function is applied, not when the `fn*` special form that creates the function is evaluated. Here's the C# code itself, which I admit I largely lifted from the C# reference implementation:
-```C#
-JKLFunc new_Func = new JKLFunc(FnBodyForms, env, FnParamsSeq, args => EVAL(FnBodyForms, new EnvFn(cur_env, FnParamsSeq, args)))
-```
-Clearly, if I'm going to get `recur` working inside a function, I'm going to have to unpack this a bit. Or accept the lmitation that `recur` can only work inside a `loop`, which wouldn't in fact be a complete showstopper. I decided to spend a bit of time looking at the closure mechanism before constraining `recur`.
+The far simpler infinite loop `(def! g (fn* (n) (recur n)))` also worked, in that `JKL` hung without crashing due to a stack overflow. 
+
 
 ## Tail check
 
-In Clojure, `recur` can only be used in the so-called tail position - i.e. the last form executed by the enclosing `fn*` or `loop`. I haven't implemented such a restriction. 
+In Clojure, `recur` can only be used in the so-called tail position - i.e. the last form executed by the enclosing `fn*` or `loop`. I haven't coded a tail-check test, but when I tried `(loop () (recur) 'dummy)` `JKL` generated an `EVAL` exception. I'm not too concerned because `recur` is only supposed to work in the tail position, but (as I write this) I don't actually understand why it is in fact crashing.
+
+TO BE CONTINUED
+ 
 
 
 
