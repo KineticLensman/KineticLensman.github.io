@@ -27,11 +27,11 @@ At first sight, I seemed to have the following options:
 * Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
 * Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
 
-Clojure shows that a Lisp implementation can include both `recur` and `loop`. On this basis, I decided to explore both before picking one to actually implement.
+Clojure shows that a Lisp implementation can include both `recur` and `loop` so I decided to explore both before picking one to  implement.
 
 ## Looping in Common Lisp
 
-I started by looking at open source Common Lisp implementations to see how they handle `loop`. In [Steel Bank Common Lisp](https://github.com/sbcl/sbcl) I found the following [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp)
+[Steel Bank Common Lisp](https://github.com/sbcl/sbcl) has the following [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp)
 
 ```
 (defun loop-standard-expansion (keywords-and-forms environment universe)
@@ -49,7 +49,7 @@ There is a lot going on here, but the key line is
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-which shows that the core of `loop` uses the `go` special form (the Lisp equivalent of the much maligned goto statement) within a `tagbody`. This isn't the best route for `JKL` - I'd need to implement some sort of goto-like mechanism first, which isn't something I'd considered as a priority. I'd also need to implement some of Common Lisp's loop syntax, which is actually an idiosyncratic domain-specific langauge, and not particularly lisp-like.
+which implements `loop` using the `go` special form (Lisp's `goto` equivalent) within a `tagbody`. Since `JKL` doesn't have `go`, the Common Lisp approach is a non-starter. I'd also need to implement some of Common Lisp's idiosynrcatic loop syntax to do anything useful.
 
 ## Looping in Clojure
 
@@ -71,25 +71,24 @@ Because `JKL` is conceptually closer to Clojure than Common Lisp, I decided to a
 
 ## Design planning
 
-At this point, instead of starting to hack together a quick-and-dirty solution, I decided to spend some time thinking through the overall implementation approach - since `loop` / `recur` seemed like the most complex change I'd yet made to `JKL` 1.0. (Incidentally, I made an unconscious decision to implemennt `loop` in the underlying C# rather than to create a `loop` macro in `JKL` itself. I only realised a macro would have been an alternative when I came across [this blog](https://8thlight.com/blog/patrick-gombert/2015/03/23/tail-recursion-in-clojure.html)).
+At this point, instead of starting to hack together a quick-and-dirty solution, I spent some time thinking through the overall implementation approach - since `loop` / `recur` was the most complex change to `JKL` 1.0 so far. (Incidentally, I made an unconscious decision to implement `loop` in the underlying C# rather than to create a `loop` macro in `JKL` itself. I only considered a macro approach when I came across [this blog](https://8thlight.com/blog/patrick-gombert/2015/03/23/tail-recursion-in-clojure.html)).
 
 I wrote this section over several days - in effect roughing out a high-level design of the proposed solution, although I hadn't planned that when I started writing it. My first step was to fully understand the context for designing the new functionality, which meant re-acquainting myself with the basics of evaluation in `JKL` itself.
 
 ## The starting point - `EVAL` in `JKL` 1.0
 
-The `EVAL` function takes two arguments:
+`EVAL` is the core of the `JKL` Read-Eval-Print-loop (REPL). The `EVAL` function takes two arguments:
 * A `JKL` expression represented as an Abstract Syntax Tree (AST)
 * An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here] (https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)
 
-`EVAL` is essentially a large C# switch statement whose cases correspond to `JKL` special forms , e.g. `fn*`, `do`, `def!`, `let*`, etc (the switch default is normal function application). When the AST is a special form, `EVAL` evalates the statements in the AST body and finshes by either:
+`EVAL` is a large C# switch statement whose cases correspond to `JKL` special forms , e.g. `fn*`, `do`, `def!`, `let*`, and whose  default case is normal function application. When the AST is a special form, `EVAL` evalates the statements in the AST body and finishes by either:
 * Directly returning a `JKL` value
 * Returning the value calculated by a recursive call to `EVAL`
 * Where Tail Call Optimisation is possible rather than recursion, looping back to the beginning of `EVAL`, helping to avoid stack overflow in the underlying C#
 
-
 ## A conceptual model for `loop` and `recur` in `JKL`
 
-Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values for the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the forms in the body of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. Furthermore, if the `recur` implementation can use TCO, then an infinite loop (e.g. `(loop () (recur))`) shouldn't in itself cause stack overflow in the underlying C#.
+Conceptually, `recur` returns control to a previous point in the evaluation - specifically the corresponding `loop` or containing function - passing back new values to be bound to the `loop` variables or the function arguments. Once the new bindings are established, `JKL` reevaluates the body forms of the `loop` or function. Evaluation continues until the flow of control reaches the end of the `loop` (or function) without invoking `recur`, as in the `factorial` example above, when the loop counter reaches 0. Furthermore, if the `recur` implementation can use TCO, then an infinite loop (e.g. `(loop () (recur))`) shouldn't in itself cause stack overflow in the underlying C#.
 
 Unfortunately, there is no precedent for this process in `JKL` (or MAL): none of the existing special forms explicitly return control to a previous point. Furthermore, with the exception of the `Env` mechanism, there is no explicit tracking of the evaluation stack or the state of the computation as it progresses. So some new mechanisms are going to be needed.
 
@@ -148,7 +147,6 @@ Now that `recur` works inside a `loop` special form, I had to make `recur` work 
           (recur (- target 1) (* acc target)))))
 ```
 The far simpler infinite loop `(def! g (fn* (n) (recur n)))` also worked, in that `JKL` hung without crashing due to a stack overflow. 
-
 
 ## Tail check
 
