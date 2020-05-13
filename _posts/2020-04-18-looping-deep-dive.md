@@ -16,22 +16,19 @@ The top level of Eliza in *Paradigms* uses the Common Lisp `loop` macro to repea
    (print 'eliza>)
    (write (flatten (use-eliza-rules (read))) :pretty t)))
 ```
-Unfortunately, , `JKL` lacks a loop mechanism (as does MAL, on which it is based), so I can't implement this Eliza code directly. The rest of this post described how I overcame this limitation.
+Unfortunately, `JKL` lacks a loop mechanism (as does MAL, on which it is based), so I can't implement this Eliza code directly. The rest of this post described how I overcame this limitation.
 
 # Choosing a looping approach
 
 ## Looping options
 
-At first sight, I seemed to have the following options:
-* Use recursion instead of iteration. This would be the simplest option, but it wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it
-* Implement something like Common Lisp's `loop` macro (which is also used in Clojure)
-* Extend `JKL`'s recursion mechanism with a Clojure-like `recur` function
+The simplest solution would be to use recursion, which because `JKL` has Tail Call Optimization (TCO) would be memory-efficient. However, this solution wouldn't offer any opportunities to enhance `JKL` - one of my project goals. So I discounted it. 
 
-Clojure shows that a Lisp implementation can include both `recur` and `loop` so I decided to explore both before picking one to  implement.
+Instead, I decided to take a look at the `loop` macro used by Common Lisp, and the `recur` mechanism used by `Clojure` to see how easy it would be to add one (or both) of these to `JKL`.
 
 ## Looping in Common Lisp
 
-[Steel Bank Common Lisp](https://github.com/sbcl/sbcl) has the following [`loop` macro](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp)
+The source code for [Steel Bank Common Lisp](https://github.com/sbcl/sbcl) is available on Github, and after some searching I found the following [`loop`](https://github.com/sbcl/sbcl/blob/master/src/code/loop.lisp) macro:
 
 ```
 (defun loop-standard-expansion (keywords-and-forms environment universe)
@@ -49,7 +46,7 @@ There is a lot going on here, but the key line is
 ```
 `(block nil (tagbody ,tag (progn ,@keywords-and-forms) (go ,tag)))
 ```
-which implements `loop` using the `go` special form (Lisp's `goto` equivalent) within a `tagbody`. Since `JKL` doesn't have `go`, the Common Lisp approach is a non-starter. I'd also need to implement some of Common Lisp's idiosynrcatic loop syntax to do anything useful.
+which implements `loop` using the `go` special form (Lisp's `goto` equivalent) within a `tagbody`. Since `JKL` doesn't have `go`, the Common Lisp approach is a non-starter. I'd also need to implement some of Common Lisp's idiosyncratic loop syntax to do anything useful.
 
 ## Looping in Clojure
 
@@ -79,7 +76,7 @@ I wrote this section over several days - in effect roughing out a high-level des
 
 `EVAL` is the core of the `JKL` Read-Eval-Print-loop (REPL). The `EVAL` function takes two arguments:
 * A `JKL` expression represented as an Abstract Syntax Tree (AST)
-* An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here] (https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)
+* An environment `env` object that holds the context (symbols and their values) within which the AST should be evaluated. Environments are described [here](https://www.non-kinetic-effects.co.uk/blog/2020/05/03/environments)
 
 `EVAL` is a large C# switch statement whose cases correspond to `JKL` special forms , e.g. `fn*`, `do`, `def!`, `let*`, and whose  default case is normal function application. When the AST is a special form, `EVAL` evalates the statements in the AST body and finishes by either:
 * Directly returning a `JKL` value
