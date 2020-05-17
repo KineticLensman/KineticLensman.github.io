@@ -80,6 +80,7 @@ I also added several Common Lisp / Clojure functions to `JKL` as built-in functi
 * `char` - extracts a single element of a string (since `nth` only works on sequences). It throws an error if the index is negative, but returns nil if the index exceeds the string length. `char` actually returns a substring of length 1 rather than a character because `JKL` currently lacks a character class. Such a class might get added in due course
 * `symbol-name` - returns a string which is the print-name of a symbol, or throws an error if given a non-symbol
 * `trace` - toggles a new tracing mechanism which is currently used to record `env` updates. Will add trace-levels or similar in due course
+* `read-symbols` - given a string prompt, reads a line from the Console and converts it into tokens using the `JKL` tokeniser - TBD WORK IN PROGRESS 
 
 # Other updates and fixes
 
