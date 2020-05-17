@@ -18,11 +18,11 @@ Some aspects of Eliza implementation needed functions that weren't already prese
  
 # Eliza - the first chatbot
 
-The top level of Eliza is a sort of READ-EVAL-PRINT loop:
+The initial top level of Eliza is a sort of READ-EVAL-PRINT loop:
 ```
 (def! eliza (fn* ()
    (loop ()
-      (prn (readline "eliza> "))
+      (prn (read-tokens "eliza> "))
       (recur))))
 ```
 
