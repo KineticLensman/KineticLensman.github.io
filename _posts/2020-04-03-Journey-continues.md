@@ -59,19 +59,25 @@ I added an `and` macro using `JKL`'s existing `or` macro as a model. The semanti
 ```
 ## Improved `map` implementation
 
-As per the `MAL` guide, the `map` function in `JKL` takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore decided to extend `map` to have similar semantics.
-
-Internally, the `JKL` implementation of `map` makes a new sequence to hold the result, and then iterates over the `s` applying `f` to each element in turn. One consequence, which I hadn't thought  through before, is that `f` must take a single argument. Consider the following extract from the REPL....
+In `MAL` guide, the `map` function takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore extended `map` in `JKL` to have similar semantics. Specifically, given a function `f` and one or more sequences, the revised `map` returns a list such that each element is the result of applying `f` to element j of each of the argument sequences. The arity of `f` must match the number of argument sequences. `map` stops as soon as any of the argument sequences is exhausted. Some examples are as follows:
 
 ```
-JKL> (def! f (fn* (a b) (+ a b)))
-<fn (a b) (+ a b)>
-JKL> (f 1 2)
-3
-JKL> (map f (1 2 3))
+JKL> (map (fn* (x) (symbol? x)) (list 1 (quote two) "three"))
+(false true false)
+JKL> (def! fArgs2 (fn* (a b) (list a b)))
+<fn (a b) (list a b)>
+JKL> (map fArgs2 '(1 2 3) '(p q y))
+((1 p) (2 q) (3 y))
+JKL> (map fArgs2 '(1 2) '(p q y))
+((1 p) (2 q))
+JKL> (map fArgs2 '(1 2 3) '(p q y) 4)
+Eval error: map '<fn (a b) (list a b)>' given non-sequence 4
+In REPL
+JKL> (map fArgs2 '(1 2 3))
 Eval error: More parameters (bindings) than supplied values (expressions): (a b) ... (1)
+In REPL
 ```
-TODO - this fix is ongoing at the moment. Watch this space.
+TODO - find out what happens with &rest args.
 
 ## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
 
@@ -103,7 +109,7 @@ I made several other enhancements based on experience using `JKL`. Some of these
 
 * Started to rationalise the format of the error messages printed by built in functions
 
-* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of map as described above
+* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of `map` as described above
 
 * Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros
 
