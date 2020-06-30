@@ -109,7 +109,7 @@ I made several other enhancements based on experience using `JKL`. Some of these
 
 * Started to rationalise the format of the error messages printed by built in functions
 
-* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of `map` as described above
+* Redid error messages in `Env` to give better info when binding fails because the number of bindings doesn't match the number of expressions. The need for this fix became apparent when working on the improved implementation of `map` as described above, where the number of supplied sequences doesn't match the arity of the supplied function
 
 * Changed the definitions of built-in macros (`or`, `not`, etc) so that their args have meaningful names (e.g. `or-args` rather than `xs` as per MAL). This helps debugging by making it easier to identify places where incorrect numbers of arguments are supplied to the macros
 
