@@ -59,7 +59,7 @@ I added an `and` macro using `JKL`'s existing `or` macro as a model. The semanti
 ```
 ## Improved `map` implementation
 
-In `MAL`, the `map` function takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, looking at some exercises in Lisp textbooks, I realised that Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore extended `map` in `JKL` to have similar semantics. Specifically, given a function `f` and one or more sequences, the revised `map` returns a list such that each element is the result of applying `f` to element j of each of the argument sequences. The arity of `f` must match the number of argument sequences. `map` stops as soon as any of the argument sequences is exhausted. Some examples are as follows:
+In `MAL`, the `map` function takes a function `f` and a single sequence `s`, and then applies `f` to the successive elements of `s`. However, Common Lisp's `mapcar` and Clojure's `map` function can handle multiple sequences. I therefore extended `map` in `JKL` to have similar semantics. Specifically, given a function `f` and one or more sequences, the revised `map` returns a list such that each element `j` is the result of applying `f` to element `j` of each of the argument sequences. The arity of `f` must match the number of argument sequences. `map` stops as soon as any of the argument sequences is exhausted. Some examples are as follows:
 
 ```
 JKL> (map (fn* (x) (symbol? x)) (list 1 (quote two) "three"))
@@ -77,7 +77,7 @@ JKL> (map fArgs2 '(1 2 3))
 Eval error: More parameters (bindings) than supplied values (expressions): (a b) ... (1)
 In REPL
 ```
-TODO - find out what happens with `&rest` args.
+
 
 ## Miscellaneous new builtin `JKL` functions added for Common Lisp compatability
 
