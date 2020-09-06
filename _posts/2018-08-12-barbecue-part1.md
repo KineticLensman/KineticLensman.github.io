@@ -12,7 +12,7 @@ This is the first of a two part blog on practical barbeque techniques, concentra
 First, the essential equipment:
 
 * The barbeque itself. I use a Weber kettle grill - a large metal kettle with a lower charcoal grate and a cooking grate that sits a few inches over the charcoal grate. Crucially, it has a lid
-* Charcoal briquettes - more expensive than lumpwood charcoal, but the individual coals are more even in size and manageable than random bits of wood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more)
+
 * Two pairs of tongs: one for moving raw / partially cooked food, one that is only used for food that is cooked or in the final stages of cooking. I'm really strict about not mixing up the raw and cooked tongs, and mine have different coloured handles so that I don't get them confused
 * Firelighter cubes. These are marketed with varying degrees of eco-friendliness, but I use the ones that light most reliably (the white petroleum-based variety). I don't use gels or lighter fluid
 * A lighter - either long safety matches or a butane gas lighter
@@ -26,7 +26,18 @@ Optional stuff:
 * A small rack to support things like chicken
 * Other cooking tools including spatulas, forks etc
 * Flavoured smoking wood (such as mesquite) to enhance the uniquely smoky taste of certain foods
+* A small smoker box to hold smoking wood
 * Dustpan and brush for collecting ash when the barbeque has completely cooled down
+
+## The Fuel
+
+Charcoal comes in two different forms:
+* Lumpwood
+* Briquettes
+
+Both types have their place. They are equally easy to light (as discussed below). Lumpwood is generally cheaper and is faster to use (it reaches an even cooking temperature faster). However, the sizes of the individual pieces can be variable, including tiny fragments and over-large lumps. Briquettes, although expensive, are more even in size and manageable than random bits of lumpwood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more).
+
+Personally, I use lumpwood for small quick grills (e.g. cooking a few sausages for two people) but prefer briquettes for larger, multi-course meals. Briquettes are essential for cooking joints and smoking because lumpwood won't stay hot for long enough. 
 
 ## Lighting the barbeque
 
@@ -42,9 +53,11 @@ To light the barbeque:
 
 The barbeque will generate quite a lot of smoke just after ignition but this should clear well before you start cooking.
 
-Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.  
+Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.
 
-Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining (see below for more on bad weather barbeques). Either way, the next step is to add smoking wood if you are using it, and get cooking...
+If you are using smoking wood, add it just before putting the food on the grill (the wood is wasted if the food isn't there to be smoked). You can put it directly onto the charcoal although a smoking box will make it last longer. Spraying the wood with water before adding it will also make it last longer, although obviously if the wood is wet it will kill the heat of the charcoal. 
+
+Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining (see below for more on bad weather barbeques). Either way, the next step is to get cooking...
 
 ## Cooking
 
