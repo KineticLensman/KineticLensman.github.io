@@ -35,7 +35,7 @@ Charcoal comes in two different forms:
 * Lumpwood
 * Briquettes
 
-Both types have their place. They are equally easy to light (as discussed below). Lumpwood is generally cheaper and reaches an even cooking temperature faster. However, the sizes of the individual pieces can be variable, including tiny fragments and over-large lumps. Briquettes, although expensive, are more even in size and manageable than random bits of lumpwood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more).
+Both types have their place. They are equally easy to light (as discussed below). Lumpwood is generally cheaper and reaches an even cooking temperature faster. However, the sizes of the individual pieces can be variable, ranging from tiny fragments to over-large lumps. Briquettes, although expensive, are more even in size and manageable than random bits of lumpwood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more).
 
 Personally, I use lumpwood for small quick grills (e.g. cooking a few sausages for two people) but prefer briquettes for larger, multi-course meals. Briquettes are essential for cooking joints and smoking because lumpwood won't stay hot for long enough. 
 
@@ -47,7 +47,7 @@ To light the barbeque:
 * Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
 * Place four of five firelighter cubes near the centre, and light them using the lighter
 * Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that roll off
-* Leave it for several minutes (wait longer for briquettes) before doing anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle. It might seem that nothing is happening once the firelighters are burnt out but if you wait patiently you'll eventually see that the middle coals are acquiring white ash, which means they are coming up to temperature
+* Leave it for several minutes (waiting longer for briquettes) before doing anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle. It might seem that nothing is happening once the firelighters are burnt out but if you wait patiently you'll eventually see that the middle coals are acquiring white ash, which means they are coming up to temperature
 * Poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre
 * Repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible
 
