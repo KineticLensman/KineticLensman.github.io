@@ -35,7 +35,7 @@ Charcoal comes in two different forms:
 * Lumpwood
 * Briquettes
 
-Both types have their place. They are equally easy to light (as discussed below). Lumpwood is generally cheaper and is faster to use (it reaches an even cooking temperature faster). However, the sizes of the individual pieces can be variable, including tiny fragments and over-large lumps. Briquettes, although expensive, are more even in size and manageable than random bits of lumpwood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more).
+Both types have their place. They are equally easy to light (as discussed below). Lumpwood is generally cheaper and reaches an even cooking temperature faster. However, the sizes of the individual pieces can be variable, including tiny fragments and over-large lumps. Briquettes, although expensive, are more even in size and manageable than random bits of lumpwood and they pump out heat for ages, allowing long duration cooking (e.g. two hours or more).
 
 Personally, I use lumpwood for small quick grills (e.g. cooking a few sausages for two people) but prefer briquettes for larger, multi-course meals. Briquettes are essential for cooking joints and smoking because lumpwood won't stay hot for long enough. 
 
@@ -47,7 +47,7 @@ To light the barbeque:
 * Put a single flat layer of coals onto the charcoal grate, shaped into a rough circle
 * Place four of five firelighter cubes near the centre, and light them using the lighter
 * Working quickly, make a crude pyramid of coals over the cubes, using tongs to reposition the ones that roll off
-* Leave it for 15 minutes before doing anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle. It might seem that nothing is happening once the firelighters are burnt out but if you wait patiently you'll eventually see that the middle coals are acquiring white ash, which means they are coming up to temperature
+* Leave it for several minutes (wait longer for briquettes) before doing anything, so that the outer coals are mainly unburnt, but there is a good red glow in the middle. It might seem that nothing is happening once the firelighters are burnt out but if you wait patiently you'll eventually see that the middle coals are acquiring white ash, which means they are coming up to temperature
 * Poke the pyramid a bit and rebuild it, using tongs, to gradually move the unburnt coals closer to the centre
 * Repeat the process a couple of times over the next 10 to 20 minutes. It's ready to cook when most of the coals are covered in white ash, and there are no real flames visible
 
@@ -55,7 +55,7 @@ The barbeque will generate quite a lot of smoke just after ignition but this sho
 
 Alternatively, use a starter chimney: put a layer of coal and lighter cubes on the chimney base, light it, and then fill the chimney to its brim with coals. When the coals are ready, tip them onto the charcoal grate. Chimneys are faster and you don't need to fuss over them. However, you are limited by the size of the chimney: a small one can't make sufficient coals for a large barbeque in a single batch.
 
-If you are using smoking wood, add it just before putting the food on the grill (the wood is wasted if the food isn't there to be smoked). You can put it directly onto the charcoal although a smoking box will make it last longer. Spraying the wood with water before adding it will also make it last longer, although obviously if the wood is wet it will kill the heat of the charcoal. 
+If you are using smoking wood, add it just before putting the food on the grill (the wood is wasted if the food isn't there to be smoked). You can put it directly onto the charcoal although a smoking box will make it last longer. Spraying the wood with water before adding it will also make it last longer, although obviously if the wood is dripping wet it will kill the heat of the charcoal. 
 
 Personally, I think barbeques should be unhurried, and I because I enjoy the process, I prefer the 'pyramid' approach, unless I am actually in a real hurry, or it's raining (see below for more on bad weather barbeques). Either way, the next step is to get cooking...
 
