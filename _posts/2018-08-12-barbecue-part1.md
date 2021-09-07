@@ -87,6 +87,8 @@ Incidentally, although my kettle has air vents in the lid and the base I never u
 
 To significantly speed up serving (retaining heat and flavoured smoke and reducing stress on the cook), put the cooked food on a clean plate (not one used for raw food) and take this to the table rather than serve people directly from the grill. This lets other people get involved in making sure that everyone gets a fair potion, especially when children are present. The saved time also gives the cook a chance to eat while other courses are cooking indirectly.
 
+Somewhat heretically, you can take food from the grill and put it somewhere else to keep it warm - even a conventional oven. This approach can be useful if you have multiple separate dishes and a large number of people that you want to feed simultaneously. 
+
 ## Afterwards
 
 Close the air vents to stop the cooking and let the ash get completely cold before brushing it out or taking the barbeque inside. Really, really cold. 
