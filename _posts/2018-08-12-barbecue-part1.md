@@ -72,13 +72,15 @@ The half-way house between direct and indirect involves using a cooking grate bu
 However, regardless of how you position the coal, the secret of good barbeques is to use the lid. Once you've put the food in position (making sure nothing will really get scorched), put the lid on and then leave things for at least five minutes before lifting the lid. You can then open the lid to check progress and perhaps turn things or move them closer to or further away from the heat. Occasional turns like this also help to ensure that food is evenly cooked on all sides. When cooking solely using indirect heat, I might not lift the lid for really long times, perhaps 30 mins to an hour depending on what I'm cooking. As the old adage goes: "If you're looking, it's not cooking".
 
 The lid has three really useful effects:
-* Heat builds up inside the kettle, rasing the overall temperature and getting more even heat everywhere. The barbeque becomes a combined oven-grill
+* Heat builds up inside the kettle, raising the overall temperature and getting more even heat everywhere. The barbeque becomes a combined oven-grill
 * It concentrates cooking smoke and builds the flavour, especially if you use smoking wood
 * It reduces the tendency to continually faff around. As you build confidence, and by placing food correctly, you stop worrying that everything will be instantly burnt
 
 Exceptions to using the lid:
 * Starting burgers - using a grill pan to seal each side (by sliding and flipping). Once sealed, you can transfer the burgers to the cooking grate - or move the pan away from direct heat - before replacing the lid
 * Just before serving - finishing food off by turning it to get good 'grill marks'
+
+Incidentally, although my kettle has vent holes in the lid and the base I never use these to control the cooking speed. I just leave them fully open and control the heat - as I've already described - by positioning the coals and food appropriately. My reasoning here is that continually tweaking the vents forces a micromanagement approach which is incompatible with my hands-off cooking style. Also, my kettle doesn't have a thermometer, so I don't have the data to decide when to change the vents anyway. In contrast, my smoker does have a thermometer and I do sometimes change the vents. But I mainly check the thermometer only to decide when to add more coals (something I never do with my kettle) and only close the vents if I have got the temperature stupidly high. I don't try to make continual control inputs with the vents, again because I want to avoid micromanagement. 
 
 
 ## Serving
